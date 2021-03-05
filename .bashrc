@@ -135,9 +135,6 @@ export PATH="$PATH:~/Downloads/flutter/bin"
 export PATH="$PATH:~/Android/Sdk/emulator"
 alias studio='studio.sh'
 
-# Discord Bot Token
-export TOKEN='ODEwODU2MDUyMTczNTcwMTA4.YCpuiw.vzjIx02KGAEYmeXQdGF7SWZUBPE'
-
 alias python='python3'
 alias ..='cd ..'
 alias vim='vim -p'
