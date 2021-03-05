@@ -261,6 +261,7 @@ set relativenumber
 
 " terminal
 set showcmd
+nnoremap vt :vert term<Enter>
 
 " auto-complete
 set wildmenu
@@ -411,6 +412,12 @@ autocmd FileType cs nnoremap t<F6> :term mcs % && clear && ./%:r.exe<Enter>
 autocmd FileType cs nnoremap tv<F6> :vert term mcs % && clear && ./%:r.exe<Enter>
 autocmd FileType cs nnoremap <F6> :!mcs % && clear && ./%:r.exe<Enter>
 
+" flutter
+autocmd FileType dart nnoremap <F6> :!flutter run &> /dev/null &<Enter>
+" autocmd FileType dart nnoremap <F6> :vert term flutter run<Enter>
+autocmd FileType dart nnoremap <F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter>
+" autocmd FileType dart nnoremap <F5> :vert term emulator -avd Pixel_3a_API_30_x86 &> /dev/null<Enter>
+
 " java
 "autocmd FileType java nnoremap <C-f> :!clear && java %<Enter>
 "autocmd FileType java nnoremap <C-b> :!javac %<Enter>
@@ -478,6 +485,10 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}
 
 " Kotlin
 "Plug 'udalov/kotlin-vim', { 'for': 'kotlin'}
+
+" Flutter
+" Plug 'thosakwe/vim-flutter'
+Plug 'reisub0/hot-reload.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
