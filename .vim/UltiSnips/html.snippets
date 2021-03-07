@@ -1,0 +1,27 @@
+snippet doct "html base" b
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="${1:utf-8}">}
+		<title>${2:Title}</title>
+		${3:<link rel="stylesheet" type="text/css" href="$4.css">}
+		${5:<script src="$6.js"></script>}
+		$7
+	</head>
+	<body$8>
+		$0		
+	</body>
+</html>
+endsnippet
+
+snippet b "tag" b
+<$1>
+	$0
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet . "div class" b
+<div class="$1">
+	$0
+</div>
+endsnippet

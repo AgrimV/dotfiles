@@ -1,0 +1,24 @@
+snippet stless "stateless widget" b
+class ${1:MyApp} extends StatelessWidget {
+	@override
+	Widget build(BuildContext context) {
+		return ${2:Container()};
+	}
+}
+$0
+endsnippet
+
+snippet stful "statefull widget" b
+class ${1:MyApp} extends StatefulWidget {
+	@override
+	_${1/(\w+).*/$1/}State createState() => _${1/(\w+).*/$1/}State();
+}
+
+class _${1/(\w+).*/$1/}State extends State<${1/(\w+).*/$1/}> {
+	@override
+	Widget build(BuildContext context) {
+		return ${3:Container()};
+	}
+}
+$0
+endsnippet

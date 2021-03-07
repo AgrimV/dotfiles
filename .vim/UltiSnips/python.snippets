@@ -1,0 +1,112 @@
+snippet def "function" b
+def ${1:func_name}(${2:param}):
+	"""
+	${3:DOCSTRING}
+	"""
+	${4:${VISUAL:pass}}
+
+
+$0
+endsnippet
+
+snippet defc "class method" b
+@classmethod
+def ${1:func_name}(cls${2:param}):
+	"""
+	${3:DOCSTRING}
+	"""
+	${4:${VISUAL:pass}}
+
+
+$0
+endsnippet
+
+snippet defs "static method" b
+@staticmethod
+def ${1:func_name}(${2:param}):
+	"""
+	${3:DOCSTRING}
+	"""
+	${4:${VISUAL:pass}}
+
+
+$0
+endsnippet
+
+snippet dec "decorator" b
+@${1:decorator}
+def ${2:func_name}(${3:param}):
+	"""
+	${4:DOCSTRING}
+	"""
+	${5:${VISUAL:pass}}
+
+
+$0
+endsnippet	
+
+snippet cla "class" b
+class ${1:class_name}(${2:inherit_from}):
+	"""
+	${3:DOCSTRING}
+	"""
+	def __init__(self$4):
+		${5:pass}
+
+	$6
+
+$0
+endsnippet
+
+snippet ife "if-else" b
+if ${1:condition}:
+	${2:pass}
+$3
+else:
+	${4:pass}
+$0
+endsnippet
+
+snippet el "elif" b
+elif ${1:condition}:
+	${2:pass}
+$0
+endsnippet
+
+snippet if "if" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet inif "inline if-else" !b
+if ${1:condition} else ${2:statement}
+$0
+endsnippet
+
+snippet main "if main" b
+if __name__ == '__main__':
+	${1:${VISUAL:main()}}
+endsnippet
+
+snippet with "with" b
+with ${1:item} as ${2:var}:
+	${3:pass}
+$0
+endsnippet
+
+snippet try "try-except-finally" b
+try:
+	${1:statements}
+$2except$3:
+	${4:raise}
+$4finally:
+	${6:fallback}
+$0
+endsnippet
+
+snippet ex "except" b
+except$1:
+	${2:alternate}
+$0
+endsnippet
