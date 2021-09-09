@@ -116,8 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+# Finding in Files
+alias search=~/.search.sh
+
 # VimUnity
-alias uvi=./.unity.sh
+alias uvi=~/.unity.sh
 
 # Disable ScreenPad
 # xrandr --output HDMI-1-1 --off
@@ -129,19 +133,43 @@ alias dot='/usr/bin/git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME'
 alias create='python3 -m venv venv'
 alias activate='source venv/bin/activate'
 
+
+# Flutter 220
+export PATH="$PATH:~/Downloads/flutter220/bin"
+export PATH="$PATH:~/Downloads/flutter220/bin/cache/dart-sdk/bin"
+alias flutter220="~/Downloads/flutter220/bin/flutter"
+
 # Flutter
 export PATH="$PATH:~/Downloads/android-studio/bin"
 export PATH="$PATH:~/Downloads/flutter/bin"
+export PATH="$PATH:~/Downloads/flutter/bin/cache/dart-sdk/bin"
 export PATH="$PATH:~/Android/Sdk/emulator"
+alias flutter="~/Downloads/flutter/bin/flutter"
 alias studio='studio.sh'
+alias emu='emulator -avd Pixel_3a_API_30_x86 &> /dev/null &'
 
-alias python='python3'
 alias ..='cd ..'
 alias vim='vim -p'
+alias nvd='~/Downloads/neovide/target/release/neovide'
 alias cl='clear'
 alias up='sudo apt -y update && sudo apt -y upgrade'
-alias ar='sudo apt autoremove'
+alias ar='sudo apt autoremove -y'
 alias install='sudo apt install'
 alias remove='sudo apt remove'
 alias purge='sudo apt purge'
+alias vim_up=./.vim_up.sh
 export UNITYPROJECTPATH="/home/agrimv/Documents/Unity"
+
+echo && echo && echo
+cat ~/.notes
+echo && echo && echo
+
+alias vs='cd ~/Documents/Flutter/vstudy'
+alias vsp='cd ~/Documents/Flutter/vstudy && git pull'
+
+alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
+alias sv='cd ~/Documents/Flutter/scootywale'
+alias fr='flutter run --no-sound-null-safety'
+
+alias note='vim ~/.notes'
+. "$HOME/.cargo/env"

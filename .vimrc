@@ -1,3 +1,6 @@
+" buffer modifiable
+set ma
+
 " highlight trailing space NOT
 let g:toggleHighlightWhitespace=0
 
@@ -26,7 +29,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set textwidth=79
-set noexpandtab
+" set noexpandtab
 set backspace=indent,eol,start
 
 " cursor shape
@@ -35,68 +38,6 @@ autocmd InsertLeave * silent !echo -ne "\e[2 q"
 
 " search in sub directories
 set path+=**
-
-" omnisharp
-" Don't autoselect first omnicomplete option, show options even if there is only
-" one (so the preview documentation is accessible). Remove 'preview', 'popup'
-" and 'popuphidden' if you don't want to see any documentation whatsoever.
-" Note that neovim does not support `popuphidden` or `popup` yet:
-" https://github.com/neovim/neovim/issues/10996
-if has('patch-8.1.1880')
-  set completeopt=longest,menuone,popuphidden
-  " Highlight the completion documentation pop-up background/foreground the same as
-  " the completion menu itself, for better readability with highlighted
-  " documentation.
-  set completepopup=highlight:Pmenu,border:off
-else
-  set completeopt=longest,menuone,preview
-  " Set desired preview window height for viewing documentation.
-  set previewheight=5
-endif
-
-let g:ale_linters = { 'cs': ['OmniSharp'] }
-
-augroup omnisharp_commands
-  autocmd!
-
-  " Show type information automatically when the cursor stops moving.
-  " Note that the type is echoed to the Vim command line, and will overwrite
-  " any other messages in this space including e.g. ALE linting messages.
-  autocmd CursorHold *.cs OmniSharpTypeLookup
-
-autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
-autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
-autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
-autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osd <Plug>(omnisharp_documentation)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
-autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
-autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
-
-autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)
-autocmd FileType cs nmap <silent> <buffer> ]] <Plug>(omnisharp_navigate_down)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osgcc <Plug>(omnisharp_global_code_check)
-" Contextual code actions (uses fzf, CtrlP or unite.vim selector when available)
-"autocmd FileType cs nmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_code_actions)
-"autocmd FileType cs xmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_code_actions)
-autocmd FileType cs nmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
-autocmd FileType cs xmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
-
-autocmd FileType cs nmap <silent> <buffer> <Leader>os= <Plug>(omnisharp_code_format)
-
-autocmd FileType cs nmap <silent> <buffer> <Leader>osnm <Plug>(omnisharp_rename)
-
-autocmd FileType cs nmap <silent> <buffer> <Leader>osre <Plug>(omnisharp_restart_server)
-autocmd FileType cs nmap <silent> <buffer> <Leader>osst <Plug>(omnisharp_start_server)
-autocmd FileType cs nmap <silent> <buffer> <Leader>ossp <Plug>(omnisharp_stop_server)
-augroup END
-
-" Enable snippet completion, using the ultisnips plugin
-let g:OmniSharp_want_snippet=1
-
 
 "======================================COC=====================================
 " coc sample config
@@ -198,10 +139,12 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-vmap <silent><leader>a  <Plug>(coc-codeaction-selected)
+" vmap <silent><leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <silent><leader>a  <Plug>(coc-codeaction)
+" nmap <silent><leader>a  <Plug>(coc-codeaction)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -264,6 +207,7 @@ set relativenumber
 " terminal
 set showcmd
 nnoremap tv :vert term<Enter>
+nnoremap tt :term<Enter>
 
 " auto-complete
 set wildmenu
@@ -318,6 +262,7 @@ nnoremap k gk
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " nerd tree additional
+set encoding=UTF-8
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 let g:NERDTreeGitStatusConcealBrackets = 1
@@ -341,29 +286,78 @@ nmap ga <Plug>(EasyAlign)
 " spell check
 set spell spelllang=en
 
-" ALE completion
+" ALE
 let g:ale_completion_enabled = 1
+nnoremap <silent> ]e :ALENext<Enter>
+nnoremap <silent> [e : ALEPrevious<Enter>
 
 " split navigations
+nnoremap <silent> \\ :split<Enter>
+nnoremap <silent> \v :vsplit<Enter>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
+" convenience
+nnoremap <Esc>[1;3A ddkP
+nnoremap <Esc>[1;3B ddjP
+nnoremap py viwpyiw
+nnoremap Fp :echo @%<Enter>
+nnoremap FP :echo expand('%:p')<Enter>
+
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 2
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " correction for lightline
 set laststatus=2
 let g:lightline = {
+	  \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
       \ 'colorscheme': 'onedark',
       \ }
+
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]] }
+
+let g:lightline.active = {
+            \ 'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+            \            [ 'lineinfo' ],
+	    \            [ 'percent' ],
+	    \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
+
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
+
       
 " ale settings
 nmap <silent> <C-f> <Plug>(ale_previous_wrap)
@@ -374,25 +368,30 @@ nmap a :q
 nmap w :w<Enter>
 
 " web
+" execute
 autocmd FileType html nnoremap <F6> :!xdg-open %<Enter>
 
 " rust
+" execute
 "let g:rustfmt_autosave = 1
 "autocmd FileType rust nnoremap <C-b> :!rustc %<Enter>
 "autocmd FileType rust nnoremap <C-x> :!clear && ./%:r<Enter>
 
 " go
+" execute
 "autocmd FileType go nnoremap <C-f> :!clear && go run %<Enter>
 "autocmd FileType go nnoremap <C-b> :!go build %<Enter>
 "autocmd FileType go nnoremap <C-x> :!clear && ./%:r<Enter>
       
 " python
+" execute
 " let g:pymode_run_bind = '<C-r>'
 autocmd Filetype python nnoremap <F6> :!clear && python3 %<Enter>
 autocmd Filetype python nnoremap t<F6> :term python3 %<Enter>
 autocmd Filetype python nnoremap tv<F6> :vert term python3 %<Enter>
 
 " c/cpp
+" execute
 autocmd FileType cpp nnoremap t<C-b> :term g++ -o  %:r %<Enter>
 autocmd FileType cpp nnoremap tv<C-b> :vert term g++ -o  %:r %<Enter>
 autocmd FileType cpp nnoremap <C-b> :!g++ -o  %:r %<Enter>
@@ -407,6 +406,68 @@ autocmd FileType c nnoremap tv<F6> :vert term g++ -o  %:r % -lgraph && clear && 
 autocmd FileType c nnoremap <F6> :!g++ -o  %:r % -lgraph && clear && ./%:r<Enter>
 
 " c#
+" omnisharp
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview', 'popup'
+" and 'popuphidden' if you don't want to see any documentation whatsoever.
+" Note that neovim does not support `popuphidden` or `popup` yet:
+" https://github.com/neovim/neovim/issues/10996
+if has('patch-8.1.1880')
+  set completeopt=longest,menuone,popuphidden
+  " Highlight the completion documentation pop-up background/foreground the same as
+  " the completion menu itself, for better readability with highlighted
+  " documentation.
+  set completepopup=highlight:Pmenu,border:off
+else
+  set completeopt=longest,menuone,preview
+  " Set desired preview window height for viewing documentation.
+  set previewheight=5
+endif
+
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+augroup omnisharp_commands
+  autocmd!
+
+  " Show type information automatically when the cursor stops moving.
+  " Note that the type is echoed to the Vim command line, and will overwrite
+  " any other messages in this space including e.g. ALE linting messages.
+  autocmd CursorHold *.cs OmniSharpTypeLookup
+
+autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfu <Plug>(omnisharp_find_usages)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfi <Plug>(omnisharp_find_implementations)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ospd <Plug>(omnisharp_preview_definition)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ospi <Plug>(omnisharp_preview_implementations)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osd <Plug>(omnisharp_documentation)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfs <Plug>(omnisharp_find_symbol)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osfx <Plug>(omnisharp_fix_usings)
+autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+
+autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)
+autocmd FileType cs nmap <silent> <buffer> ]] <Plug>(omnisharp_navigate_down)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osgcc <Plug>(omnisharp_global_code_check)
+" Contextual code actions (uses fzf, CtrlP or unite.vim selector when available)
+"autocmd FileType cs nmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_code_actions)
+"autocmd FileType cs xmap <silent> <buffer> <Leader>osca <Plug>(omnisharp_code_actions)
+autocmd FileType cs nmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
+autocmd FileType cs xmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
+
+autocmd FileType cs nmap <silent> <buffer> <Leader>os= <Plug>(omnisharp_code_format)
+
+autocmd FileType cs nmap <silent> <buffer> <Leader>osnm <Plug>(omnisharp_rename)
+
+autocmd FileType cs nmap <silent> <buffer> <Leader>osre <Plug>(omnisharp_restart_server)
+autocmd FileType cs nmap <silent> <buffer> <Leader>osst <Plug>(omnisharp_start_server)
+autocmd FileType cs nmap <silent> <buffer> <Leader>ossp <Plug>(omnisharp_stop_server)
+augroup END
+
+" Enable snippet completion, using the ultisnips plugin
+let g:OmniSharp_want_snippet=1
+
+" execute
 autocmd FileType cs nnoremap t<C-b> :term mcs %<Enter>
 autocmd FileType cs nnoremap tv<C-b> :vert term mcs %<Enter>
 autocmd FileType cs nnoremap <C-b> :!mcs %<Enter>
@@ -414,18 +475,31 @@ autocmd FileType cs nnoremap t<F6> :term mcs % && clear && ./%:r.exe<Enter>
 autocmd FileType cs nnoremap tv<F6> :vert term mcs % && clear && ./%:r.exe<Enter>
 autocmd FileType cs nnoremap <F6> :!mcs % && clear && ./%:r.exe<Enter>
 
+" dart
+let g:dart_format_on_save = 1
+" execute
+autocmd FileType dart nnoremap t<C-b> :term dart %<Enter>
+autocmd FileType dart nnoremap tv<C-b> :vert term dart %<Enter>
+autocmd FileType dart nnoremap <C-b> :term dart %<Enter>
+
 " flutter
+" pub get
+autocmd FileType dart nnoremap <C-g> :!flutter pub get<Enter>
+
+" execute
 autocmd FileType dart nnoremap <F6> :!flutter run &> /dev/null &<Enter>
 " autocmd FileType dart nnoremap <F6> :vert term flutter run<Enter>
-autocmd FileType dart nnoremap <F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter>
+autocmd FileType dart nnoremap <silent> <F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter><Enter>
 " autocmd FileType dart nnoremap <F5> :vert term emulator -avd Pixel_3a_API_30_x86 &> /dev/null<Enter>
 
 " java
-"autocmd FileType java nnoremap <C-f> :!clear && java %<Enter>
-"autocmd FileType java nnoremap <C-b> :!javac %<Enter>
-"autocmd FileType java nnoremap <F6> :!javac % && clear && java %:r<Enter>
+" execute
+autocmd FileType java nnoremap <C-f> :!clear && java %<Enter>
+autocmd FileType java nnoremap <C-b> :!javac %<Enter>
+autocmd FileType java nnoremap <F6> :!javac % && clear && java %:r<Enter>
 
 " kotlin
+" execute
 "autocmd FileType kotlin nnoremap <C-b> :!kotlinc % -include-runtime -d %:r.jar<Enter>
 "autocmd FileType kotlin nnoremap <F6> :!kotlinc % -include-runtime -d %:r.jar && clear && java -jar %:r.jar<Enter>
 
@@ -437,26 +511,23 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'RRethy/vim-illuminate'
-Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dense-analysis/ale'
-" Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-obsession'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'skywind3000/asyncrun.vim'
 
 " ColorSchemes
 Plug 'joshdick/onedark.vim'
 Plug 'arzg/vim-colors-xcode'
+Plug 'Brettm12345/moonlight.vim'
 Plug 'yuqio/vim-darkspace'
-Plug 'lewis6991/moonlight.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'atahabaki/archman-vim'
 Plug 'danilo-augusto/vim-afterglow'
@@ -465,9 +536,9 @@ Plug 'crusoexia/vim-monokai'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'danilo-augusto/vim-afterglow'
+Plug 'ryanoasis/vim-devicons'
 
 " Python
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'sillybun/vim-repl', { 'for': 'python'}
 
@@ -488,15 +559,16 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}
 " Kotlin
 "Plug 'udalov/kotlin-vim', { 'for': 'kotlin'}
 
-" Flutter
-Plug 'reisub0/hot-reload.vim'
-
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
+" Flutter
+Plug 'jparise/vim-graphql'
+Plug 'reisub0/hot-reload.vim'
+
 " Web
-Plug 'ap/vim-css-color'
+Plug 'skammer/vim-css-color'
 
 call plug#end()

@@ -1,20 +1,24 @@
-snippet unity "basic unity script" b
+snippet uni "basic unity script" b
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
-{$0
+public class ${1:NewBehaviourScript} : MonoBehaviour {
+
     // Start is called before the first frame update
-    void Start()
-    {
-        $1
+    void Start() {
+        $2
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        $2
-    }
+    void Update() {
+        $3
+    }$0
+}
+endsnippet
+
+snippet ord "override vurtual function" b
+override public ${1:void} ${2:function} {
+	base.${2/(\w+).*/$2/};$0
 }
 endsnippet
