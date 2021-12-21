@@ -24,6 +24,12 @@ syntax on
 nmap <Tab> gt
 nmap <C-x> :tabedit 
 
+" resize splits
+nmap zl :vert res +5<Enter>
+nmap zh :vert res -5<Enter>
+nmap zj :res +5<Enter>
+nmap zk :res -5<Enter>
+
 " spacing
 set tabstop=4
 set softtabstop=4
@@ -482,15 +488,20 @@ autocmd FileType dart nnoremap t<C-b> :term dart %<Enter>
 autocmd FileType dart nnoremap tv<C-b> :vert term dart %<Enter>
 autocmd FileType dart nnoremap <C-b> :term dart %<Enter>
 
+" react native
+" execute
+autocmd FileType typescriptreact nnoremap <F6> :term npx react-native start<Enter>
+autocmd FileType javascript nnoremap <F6> :term npx react-native start<Enter>
+autocmd FileType typescriptreact nnoremap <C-b> :term npx react-native run-android<Enter>
+autocmd FileType javascript nnoremap <C-b> :term npx react-native run-android<Enter>
+
 " flutter
 " pub get
 autocmd FileType dart nnoremap <C-g> :!flutter pub get<Enter>
 
 " execute
 autocmd FileType dart nnoremap <F6> :!flutter run &> /dev/null &<Enter>
-" autocmd FileType dart nnoremap <F6> :vert term flutter run<Enter>
 autocmd FileType dart nnoremap <silent> <F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter><Enter>
-" autocmd FileType dart nnoremap <F5> :vert term emulator -avd Pixel_3a_API_30_x86 &> /dev/null<Enter>
 
 " java
 " execute

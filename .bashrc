@@ -116,7 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 # Finding in Files
 alias search=~/.search.sh
 
@@ -139,14 +138,21 @@ export PATH="$PATH:~/Downloads/flutter220/bin"
 export PATH="$PATH:~/Downloads/flutter220/bin/cache/dart-sdk/bin"
 alias flutter220="~/Downloads/flutter220/bin/flutter"
 
+# React-Native
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+alias nun="npx react-native run-android"
+
 # Flutter
-export PATH="$PATH:~/Downloads/android-studio/bin"
+# export PATH="$PATH:~/Downloads/android-studio/bin"
+export PATH="$PATH:~/Android/Sdk/emulator"
 export PATH="$PATH:~/Downloads/flutter/bin"
 export PATH="$PATH:~/Downloads/flutter/bin/cache/dart-sdk/bin"
-export PATH="$PATH:~/Android/Sdk/emulator"
 alias flutter="~/Downloads/flutter/bin/flutter"
-alias studio='studio.sh'
-alias emu='emulator -avd Pixel_3a_API_30_x86 &> /dev/null &'
+alias pix3a="emulator -avd Pixel_3a_API_30_x86 &> /dev/null &"
 
 alias ..='cd ..'
 alias vim='vim -p'
@@ -164,8 +170,11 @@ echo && echo && echo
 cat ~/.notes
 echo && echo && echo
 
-alias vs='cd ~/Documents/Flutter/vstudy'
-alias vsp='cd ~/Documents/Flutter/vstudy && git pull'
+alias vs='cd ~/Documents/Flutter/vestudy'
+alias vsp='cd ~/Documents/Flutter/vestudy && git pull'
+
+alias mp='cd ~/Documents/IoT/covid-monitoring-system'
+alias mpp='cd ~/Documents/IoT/covid-monitoring-system && git pull'
 
 alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
 alias sv='cd ~/Documents/Flutter/scootywale'
@@ -173,3 +182,6 @@ alias fr='flutter run --no-sound-null-safety'
 
 alias note='vim ~/.notes'
 . "$HOME/.cargo/env"
+
+alias mqtt='sudo service mosquitto start'
+alias mqt='sudo service mosquitto stop'
