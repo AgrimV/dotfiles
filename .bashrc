@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+. "$HOME/.cargo/env"
+
 # Finding in Files
 alias search=~/.search.sh
 
@@ -144,19 +146,19 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+alias metro="npx react-native start"
 alias nun="npx react-native run-android"
 
 # Flutter
-# export PATH="$PATH:~/Downloads/android-studio/bin"
 export PATH="$PATH:~/Android/Sdk/emulator"
 export PATH="$PATH:~/Downloads/flutter/bin"
 export PATH="$PATH:~/Downloads/flutter/bin/cache/dart-sdk/bin"
 alias flutter="~/Downloads/flutter/bin/flutter"
 alias pix3a="emulator -avd Pixel_3a_API_30_x86 &> /dev/null &"
+alias fr='flutter run --no-sound-null-safety'
 
 alias ..='cd ..'
 alias vim='vim -p'
-alias nvd='~/Downloads/neovide/target/release/neovide'
 alias cl='clear'
 alias up='sudo apt -y update && sudo apt -y upgrade'
 alias ar='sudo apt autoremove -y'
@@ -178,10 +180,8 @@ alias mpp='cd ~/Documents/IoT/covid-monitoring-system && git pull'
 
 alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
 alias sv='cd ~/Documents/Flutter/scootywale'
-alias fr='flutter run --no-sound-null-safety'
 
 alias note='vim ~/.notes'
-. "$HOME/.cargo/env"
 
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
