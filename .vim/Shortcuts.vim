@@ -1,3 +1,7 @@
+" Formatting
+nnoremap <leader>p :CocCommand prettier.forceFormatDocument<Enter>
+
+
 " Web
 autocmd FileType html nnoremap <F6> :!xdg-open %<Enter>
 
@@ -21,4 +25,4 @@ autocmd FileType dart nnoremap <C-b> :!dart %<Enter>
 
 " Flutter
 autocmd FileType dart nnoremap <C-g> :!flutter pub get<Enter>
-autocmd FileType dart nnoremap <Silent><F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter><Enter>
+autocmd FileType dart nnoremap <silent><F5> :!emulator -avd Pixel_3a_API_30_x86 &> /dev/null &<Enter><Enter>

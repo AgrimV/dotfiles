@@ -23,12 +23,17 @@ class _${1/(\w+).*/$1/}State extends State<${1/(\w+).*/$1/}> {
 $0
 endsnippet
 
-snippet j "sw factory map" b
-$1: data[ResponseData.${1/(\w+).*/$1/}]??Strings.emptyString,
+snippet r "static const string definition" b
+static const String $1 = '${1/(\w+).*/$1/}';
 $0
 endsnippet
 
-snippet r "static const string definition" b
-static const String $1 = '${1/(\w+).*/$1/}';
+snippet fm "from map" b
+$1: data[Parameters.${1/(\w+).*/$1/}] ?? Strings.empty,
+$0
+endsnippet
+
+snippet tm "to map" b
+Parameters.$1: ${1/(\w+).*/$1/},
 $0
 endsnippet

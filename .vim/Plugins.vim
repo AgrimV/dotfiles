@@ -41,10 +41,11 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}
 
 " Flutter
 Plug 'jparise/vim-graphql',  { 'for': 'graphql' }
-Plug 'reisub0/hot-reload.vim', { 'for': 'dart' }
+Plug 'AgrimV/hot-reload.vim', { 'for': 'dart' }
 
 " Web
 Plug 'skammer/vim-css-color'
+Plug 'AgrimV/beautify-js', {'for': 'javascript'}
 
 " Git
 Plug 'tpope/vim-fugitive'

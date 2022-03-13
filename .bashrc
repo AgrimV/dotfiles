@@ -139,6 +139,7 @@ alias activate='source venv/bin/activate'
 export PATH="$PATH:~/Downloads/flutter220/bin"
 export PATH="$PATH:~/Downloads/flutter220/bin/cache/dart-sdk/bin"
 alias flutter220="~/Downloads/flutter220/bin/flutter"
+alias flutter223="~/Downloads/flutter223/bin/flutter"
 
 # React-Native
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -155,7 +156,9 @@ export PATH="$PATH:~/Downloads/flutter/bin"
 export PATH="$PATH:~/Downloads/flutter/bin/cache/dart-sdk/bin"
 alias flutter="~/Downloads/flutter/bin/flutter"
 alias pix3a="emulator -avd Pixel_3a_API_30_x86 &> /dev/null &"
+alias pix2="emulator -avd Pixel_2_API_32 &> /dev/null &"
 alias fr='flutter run --no-sound-null-safety'
+alias studio='~/.local/share/flatpak/app/com.google.AndroidStudio/x86_64/stable/2a92149277f511ea41de599d99b7b01dbc03ae05daca395262cd25069e958699/files/extra/android-studio/bin/studio.sh'
 
 alias ..='cd ..'
 alias vim='vim -p'
@@ -174,12 +177,18 @@ echo && echo && echo
 
 alias vs='cd ~/Documents/Flutter/vestudy'
 alias vsp='cd ~/Documents/Flutter/vestudy && git pull'
+export AWS_PAss="=P&fxE7#H!AnBec"
+alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
+
+alias vw='cd ~/Documents/Web/VeStudyweb'
+alias vwp='cd ~/Documents/Web/VeStudyweb && git pull'
 
 alias mp='cd ~/Documents/IoT/covid-monitoring-system'
 alias mpp='cd ~/Documents/IoT/covid-monitoring-system && git pull'
+alias nmon='npm run nodemon'
 
 alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
-alias sv='cd ~/Documents/Flutter/scootywale'
+alias sv='cd ~/Documents/Flutter/sw-vendor-app'
 
 alias note='vim ~/.notes'
 

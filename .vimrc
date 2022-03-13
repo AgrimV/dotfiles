@@ -34,8 +34,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set textwidth=79
-" set noexpandtab
+set noexpandtab
 set backspace=indent,eol,start
+
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " cursor shape
 autocmd InsertEnter * silent !echo -ne "\e[6 q"
