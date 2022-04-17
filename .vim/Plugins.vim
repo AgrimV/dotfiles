@@ -15,7 +15,9 @@ Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-obsession'
+Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " ColorSchemes
 Plug 'joshdick/onedark.vim'
@@ -23,18 +25,12 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'Brettm12345/moonlight.vim'
 Plug 'yuqio/vim-darkspace'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'atahabaki/archman-vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'crusoexia/vim-monokai'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'danilo-augusto/vim-afterglow'
-Plug 'ryanoasis/vim-devicons'
-
-" Python
-Plug 'davidhalter/jedi-vim', { 'for': 'python'}
-Plug 'sillybun/vim-repl', { 'for': 'python'}
 
 " C#
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}
@@ -45,7 +41,6 @@ Plug 'AgrimV/hot-reload.vim', { 'for': 'dart' }
 
 " Web
 Plug 'skammer/vim-css-color'
-Plug 'AgrimV/beautify-js', {'for': 'javascript'}
 
 " Git
 Plug 'tpope/vim-fugitive'

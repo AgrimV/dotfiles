@@ -135,9 +135,7 @@ alias create='python3 -m venv venv'
 alias activate='source venv/bin/activate'
 
 
-# Flutter 220
-export PATH="$PATH:~/Downloads/flutter220/bin"
-export PATH="$PATH:~/Downloads/flutter220/bin/cache/dart-sdk/bin"
+# Flutter 220/3
 alias flutter220="~/Downloads/flutter220/bin/flutter"
 alias flutter223="~/Downloads/flutter223/bin/flutter"
 
@@ -152,18 +150,14 @@ alias nun="npx react-native run-android"
 
 # Flutter
 export PATH="$PATH:~/Android/Sdk/emulator"
-export PATH="$PATH:~/Downloads/flutter/bin"
-export PATH="$PATH:~/Downloads/flutter/bin/cache/dart-sdk/bin"
-alias flutter="~/Downloads/flutter/bin/flutter"
 alias pix3a="emulator -avd Pixel_3a_API_30_x86 &> /dev/null &"
 alias pix2="emulator -avd Pixel_2_API_32 &> /dev/null &"
 alias fr='flutter run --no-sound-null-safety'
-alias studio='~/.local/share/flatpak/app/com.google.AndroidStudio/x86_64/stable/2a92149277f511ea41de599d99b7b01dbc03ae05daca395262cd25069e958699/files/extra/android-studio/bin/studio.sh'
 
 alias ..='cd ..'
 alias vim='vim -p'
 alias cl='clear'
-alias up='sudo apt -y update && sudo apt -y upgrade'
+alias up='sudo apt -y update && sudo apt -y upgrade && sudo apt autoremove -y'
 alias ar='sudo apt autoremove -y'
 alias install='sudo apt install'
 alias remove='sudo apt remove'
@@ -189,6 +183,7 @@ alias nmon='npm run nodemon'
 
 alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
 alias sv='cd ~/Documents/Flutter/sw-vendor-app'
+alias swa='cd ~/Documents/Web/sw-api/'
 
 alias note='vim ~/.notes'
 

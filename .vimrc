@@ -1,9 +1,3 @@
-source ~/.vim/Plugins.vim
-source ~/.vim/InitializeCoc.vim
-source ~/.vim/LightlineConfig.vim
-source ~/.vim/OmniSharpConfig.vim
-source ~/.vim/Shortcuts.vim
-
 " buffer modifiable
 set ma
 
@@ -13,10 +7,10 @@ let g:toggleHighlightWhitespace=0
 set background=dark
 set termguicolors
 
-" afterglow
+" colorscheme 
 let g:afterglow_blackout=1
 let g:afterglow_italic_comments=1
-colorscheme afterglow
+colo monokai-phoenix
 
 nmap a :q
 nmap w :w<Enter>
@@ -128,6 +122,10 @@ set spell spelllang=en
 
 " ale
 let g:ale_completion_enabled = 1
+let g:ale_disable_lsp = 1
+let g:ale_sign_column_always = 1
+nmap <silent> <C-f> <Plug>(ale_previous_wrap)
+nmap <silent> <C-g> <Plug>(ale_next_wrap)
 nnoremap <silent> ]e :ALENext<Enter>
 nnoremap <silent> [e : ALEPrevious<Enter>
 
@@ -148,6 +146,8 @@ nnoremap py viwpyiw
 nnoremap Fp :echo @%<Enter>
 nnoremap FP :echo expand('%:p')<Enter>
 
-" ale settings
-nmap <silent> <C-f> <Plug>(ale_previous_wrap)
-nmap <silent> <C-g> <Plug>(ale_next_wrap)
+source ~/.vim/Plugins.vim
+source ~/.vim/InitializeCoc.vim
+source ~/.vim/LightlineConfig.vim
+source ~/.vim/OmniSharpConfig.vim
+source ~/.vim/Shortcuts.vim
