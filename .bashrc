@@ -157,7 +157,8 @@ alias fr='flutter run --no-sound-null-safety'
 alias ..='cd ..'
 alias vim='vim -p'
 alias cl='clear'
-alias up='sudo apt -y update && sudo apt -y upgrade && sudo apt autoremove -y'
+alias upd='sudo apt -y update'
+alias upg='sudo apt upgrade'
 alias ar='sudo apt autoremove -y'
 alias install='sudo apt install'
 alias remove='sudo apt remove'
@@ -189,3 +190,8 @@ alias note='vim ~/.notes'
 
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
+
+# Fastlane
+export GEM_HOME=~/.gems
+export PATH=$PATH:~/.gems/bin
+alias fastlane='bundle exec fastlane'
