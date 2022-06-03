@@ -101,18 +101,18 @@ set encoding=UTF-8
 map <C-o> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
+" let g:NERDTreeGitStatusIndicatorMapCustom = {
+"                 \ 'Modified'  :'✹',
+"                 \ 'Staged'    :'✚',
+"                 \ 'Untracked' :'✭',
+"                 \ 'Renamed'   :'➜',
+"                 \ 'Unmerged'  :'═',
+"                 \ 'Deleted'   :'✖',
+"                 \ 'Dirty'     :'✗',
+"                 \ 'Ignored'   :'☒',
+"                 \ 'Clean'     :'✔︎',
+"                 \ 'Unknown'   :'?',
+"                 \ }
 
 " easy align
 xmap ga <Plug>(EasyAlign)
@@ -124,6 +124,10 @@ set spell spelllang=en
 let g:ale_completion_enabled = 1
 let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
+
 nmap <silent> <C-f> <Plug>(ale_previous_wrap)
 nmap <silent> <C-g> <Plug>(ale_next_wrap)
 nnoremap <silent> ]e :ALENext<Enter>

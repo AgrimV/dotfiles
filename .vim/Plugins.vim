@@ -31,6 +31,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'danilo-augusto/vim-afterglow'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " C#
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}

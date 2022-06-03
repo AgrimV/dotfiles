@@ -116,13 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # Finding in Files
 alias search=~/.search.sh
+# grep -rnw '/path' -e 'text'
 
 # VimUnity
-alias uvi=~/.unity.sh
+alias uvi=~/Documents/Bash/VimUnity/unity.sh
 
 # Disable ScreenPad
 # xrandr --output HDMI-1-1 --off
@@ -135,10 +136,6 @@ alias create='python3 -m venv venv'
 alias activate='source venv/bin/activate'
 
 
-# Flutter 220/3
-alias flutter220="~/Downloads/flutter220/bin/flutter"
-alias flutter223="~/Downloads/flutter223/bin/flutter"
-
 # React-Native
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -149,10 +146,10 @@ alias metro="npx react-native start"
 alias nun="npx react-native run-android"
 
 # Flutter
+# Create symlink of flutter binary at /usr/bin/
 export PATH="$PATH:~/Android/Sdk/emulator"
-alias pix3a="emulator -avd Pixel_3a_API_30_x86 &> /dev/null &"
-alias pix2="emulator -avd Pixel_2_API_32 &> /dev/null &"
-alias fr='flutter run --no-sound-null-safety'
+alias pix3a="emulator -avd Pixel_3a_API_31 &> /dev/null &"
+alias fr="flutter run --no-sound-null-safety"
 
 alias ..='cd ..'
 alias vim='vim -p'
@@ -160,9 +157,6 @@ alias cl='clear'
 alias upd='sudo apt -y update'
 alias upg='sudo apt upgrade'
 alias ar='sudo apt autoremove -y'
-alias install='sudo apt install'
-alias remove='sudo apt remove'
-alias purge='sudo apt purge'
 alias vim_up=./.vim_up.sh
 export UNITYPROJECTPATH="/home/agrimv/Documents/Unity"
 
@@ -170,9 +164,9 @@ echo && echo && echo
 cat ~/.notes
 echo && echo && echo
 
-alias vs='cd ~/Documents/Flutter/vestudy'
-alias vsp='cd ~/Documents/Flutter/vestudy && git pull'
-export AWS_PAss="=P&fxE7#H!AnBec"
+alias vs='cd ~/Documents/Flutter/VStudy'
+alias vsp='cd ~/Documents/Flutter/VStudy && git pull'
+export AWS_PASS="=P&fxE7#H!AnBec"
 alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
 
 alias vw='cd ~/Documents/Web/VeStudyweb'
@@ -182,9 +176,9 @@ alias mp='cd ~/Documents/IoT/covid-monitoring-system'
 alias mpp='cd ~/Documents/IoT/covid-monitoring-system && git pull'
 alias nmon='npm run nodemon'
 
-alias sw='cd ~/Documents/Flutter/sw_customer_flutter_app'
+alias sc='cd ~/Documents/Flutter/sw-customer-flutter-app'
 alias sv='cd ~/Documents/Flutter/sw-vendor-app'
-alias swa='cd ~/Documents/Web/sw-api/'
+alias sa='cd ~/Documents/Web/sw-api/'
 
 alias note='vim ~/.notes'
 
