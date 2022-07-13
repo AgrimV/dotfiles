@@ -7,10 +7,11 @@ let g:toggleHighlightWhitespace=0
 set background=dark
 set termguicolors
 
-" colorscheme 
-let g:afterglow_blackout=1
-let g:afterglow_italic_comments=1
-colo monokai-phoenix
+colo badwolf
+
+" afterglow exlusive 
+" let g:afterglow_blackout=1
+" let g:afterglow_italic_comments=1
 
 nmap a :q
 nmap w :w<Enter>

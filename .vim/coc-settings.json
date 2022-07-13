@@ -3,5 +3,6 @@
 	"coc.preferences.formatOnSaveFiletypes": ["py", "dart", "js"],
 	"coc.preferences.jumpCommand": "tabe",
 	"diagnostic.displayByAle": true,
-	"diagnostic.checkCurrentLine": true
+	"diagnostic.checkCurrentLine": true,
+	"notification.disabledProgressSources": ["*"]
 }

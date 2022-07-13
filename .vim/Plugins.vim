@@ -17,7 +17,8 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-obsession'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'vimwiki/vimwiki'
+Plug 'TaDaa/vimade' " Fade Inactive Buffers
 
 " ColorSchemes
 Plug 'joshdick/onedark.vim'
@@ -31,7 +32,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'danilo-augusto/vim-afterglow'
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'catppuccin/vim', { 'as': 'catppuccin'}
 
 " C#
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}

@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[34m\]:\[\033[01;36m\]\w\[\033[01;37m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -119,7 +119,7 @@ fi
 # . "$HOME/.cargo/env"
 
 # Finding in Files
-alias search=~/.search.sh
+alias search=~/Documents/Bash/Search/search.sh
 # grep -rnw '/path' -e 'text'
 
 # VimUnity
@@ -147,9 +147,8 @@ alias nun="npx react-native run-android"
 
 # Flutter
 # Create symlink of flutter binary at /usr/bin/
-export PATH="$PATH:~/Android/Sdk/emulator"
+export PATH="$PATH:~/Android/Sdk/emulator:~/.pub-cache/bin/flutterfire"
 alias pix3a="emulator -avd Pixel_3a_API_31 &> /dev/null &"
-alias fr="flutter run --no-sound-null-safety"
 
 alias ..='cd ..'
 alias vim='vim -p'
@@ -160,27 +159,17 @@ alias ar='sudo apt autoremove -y'
 alias vim_up=./.vim_up.sh
 export UNITYPROJECTPATH="/home/agrimv/Documents/Unity"
 
-echo && echo && echo
-cat ~/.notes
-echo && echo && echo
-
 alias vs='cd ~/Documents/Flutter/VStudy'
-alias vsp='cd ~/Documents/Flutter/VStudy && git pull'
 export AWS_PASS="=P&fxE7#H!AnBec"
 alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
 
 alias vw='cd ~/Documents/Web/VeStudyweb'
-alias vwp='cd ~/Documents/Web/VeStudyweb && git pull'
 
-alias mp='cd ~/Documents/IoT/covid-monitoring-system'
-alias mpp='cd ~/Documents/IoT/covid-monitoring-system && git pull'
 alias nmon='npm run nodemon'
 
 alias sc='cd ~/Documents/Flutter/sw-customer-flutter-app'
 alias sv='cd ~/Documents/Flutter/sw-vendor-app'
 alias sa='cd ~/Documents/Web/sw-api/'
-
-alias note='vim ~/.notes'
 
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
@@ -189,3 +178,11 @@ alias mqt='sudo service mosquitto stop'
 export GEM_HOME=~/.gems
 export PATH=$PATH:~/.gems/bin
 alias fastlane='bundle exec fastlane'
+
+cat ~/.note
+
+alias note='vim ~/.note'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

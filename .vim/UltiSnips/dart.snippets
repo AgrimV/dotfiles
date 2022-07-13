@@ -1,5 +1,7 @@
 snippet stles "stateless widget" b
 class ${1:MyApp} extends StatelessWidget {
+  const ${1/(\w+).*/$1/}({Key? key}) : super(key: key);
+
 	@override
 	Widget build(BuildContext context) {
 		return ${2:${VISUAL:Container()}};
@@ -8,8 +10,10 @@ class ${1:MyApp} extends StatelessWidget {
 $0
 endsnippet
 
-snippet stful "statefull widget" b
+snippet stful "stateful widget" b
 class ${1:MyApp} extends StatefulWidget {
+  const ${1/(\w+).*/$1/}({Key? key}) : super(key: key);
+
 	@override
 	_${1/(\w+).*/$1/}State createState() => _${1/(\w+).*/$1/}State();
 }
