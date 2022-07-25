@@ -41,3 +41,26 @@ snippet tm "to map" b
 Parameters.$1: ${1/(\w+).*/$1/},
 $0
 endsnippet
+
+snippet sd "search delegate overrides" b
+$0
+@override
+List<Widget> buildActions(BuildContext context) {
+  return <Widget>[];
+}
+
+@override
+Widget buildLeading(BuildContext context) {
+  return Container();
+}
+
+@override
+Widget buildResults(BuildContext context) {
+  return Container();
+}
+
+@override
+Widget buildSuggestions(BuildContext context) {
+  return Container();
+}
+endsnippet

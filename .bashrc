@@ -153,8 +153,6 @@ alias pix3a="emulator -avd Pixel_3a_API_31 &> /dev/null &"
 alias ..='cd ..'
 alias vim='vim -p'
 alias cl='clear'
-alias upd='sudo apt -y update'
-alias upg='sudo apt upgrade'
 alias ar='sudo apt autoremove -y'
 alias vim_up=./.vim_up.sh
 export UNITYPROJECTPATH="/home/agrimv/Documents/Unity"
@@ -179,10 +177,7 @@ export GEM_HOME=~/.gems
 export PATH=$PATH:~/.gems/bin
 alias fastlane='bundle exec fastlane'
 
-cat ~/.note
-
-alias note='vim ~/.note'
-
+# Not for Neovim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

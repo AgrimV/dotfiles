@@ -13,6 +13,8 @@ colo badwolf
 " let g:afterglow_blackout=1
 " let g:afterglow_italic_comments=1
 
+au Filetype vimwiki let b:autopairs_loaded=1
+
 nmap a :q
 nmap w :w<Enter>
 
