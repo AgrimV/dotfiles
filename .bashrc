@@ -161,8 +161,6 @@ alias vs='cd ~/Documents/Flutter/VStudy'
 export AWS_PASS="=P&fxE7#H!AnBec"
 alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
 
-alias vw='cd ~/Documents/Web/VeStudyweb'
-
 alias nmon='npm run nodemon'
 
 alias sc='cd ~/Documents/Flutter/sw-customer-flutter-app'
@@ -171,6 +169,10 @@ alias sa='cd ~/Documents/Web/sw-api/'
 
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
+
+alias serve='browser-sync start --server --files .'
+# export SERVER_IP=`hostname -I`
+# alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 900
 
 # Fastlane
 export GEM_HOME=~/.gems

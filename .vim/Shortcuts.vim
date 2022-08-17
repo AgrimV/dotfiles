@@ -3,7 +3,7 @@ nnoremap <leader>p :CocCommand prettier.forceFormatDocument<Enter>
 
 
 " Web
-autocmd FileType html nnoremap <F6> :!xdg-open %<Enter>
+autocmd FileType html nnoremap <silent><F6> :!xdg-open %<Enter><Enter>
 
 " Python
 let g:pymode_run_bind = '<C-r>'

@@ -36,6 +36,7 @@ set backspace=indent,eol,start
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv']
 
 " cursor shape
 autocmd InsertEnter * silent !echo -ne "\e[6 q"
