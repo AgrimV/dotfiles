@@ -1,11 +1,12 @@
 = self =
 	- web dev
+		* complete the todo
 	- pygame
 	- _italic_ comments in *vim*
 
 = scapp =
 	- past ride widget
-	- no empty arease
+	- no empty areas
 	- latency in location picker via text
 
 = vestudy =

@@ -34,9 +34,16 @@ set textwidth=79
 set noexpandtab
 set backspace=indent,eol,start
 
+" treat ejs files as html
+au BufNewFile,BufRead *.ejs set filetype=html
+
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv']
+
+" for gdb debugging
+autocmd FileType c packadd termdebug
+autocmd FileType cpp packadd termdebug
 
 " cursor shape
 autocmd InsertEnter * silent !echo -ne "\e[6 q"

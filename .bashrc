@@ -161,11 +161,13 @@ alias vs='cd ~/Documents/Flutter/VStudy'
 export AWS_PASS="=P&fxE7#H!AnBec"
 alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
 
-alias nmon='npm run nodemon'
+alias nmon='nodemon'
 
 alias sc='cd ~/Documents/Flutter/sw-customer-flutter-app'
 alias sv='cd ~/Documents/Flutter/sw-vendor-app'
 alias sa='cd ~/Documents/Web/sw-api/'
+
+alias ge='cd ~/Documents/C++/grond-engine'
 
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
