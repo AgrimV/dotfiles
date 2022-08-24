@@ -1,6 +1,7 @@
 = self =
 	- web dev
 		* complete the todo
+	- fix nerdtree icons (_gaga_ for getting icon details)
 	- pygame
 	- _italic_ comments in *vim*
 

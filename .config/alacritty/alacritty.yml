@@ -5,7 +5,19 @@ window:
 draw_bold_text_with_bright_colors: true
 
 font:
-  size: 13
+  normal:
+    family: agave Nerd Font
+    style: Regular 
+  bold:
+    family: agave Nerd Font
+    style: Bold 
+  # italic:
+  #   family:
+  #   style:
+  # bold_italic:
+  #   family:
+  #   style:
+  size: 16
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
