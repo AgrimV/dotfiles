@@ -18,8 +18,8 @@ Plug 'tpope/vim-obsession'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vimwiki/vimwiki'
-" Plug 'TaDaa/vimade' " Fade Inactive Buffers
 " Causes issues with Plug commands
+" Plug 'TaDaa/vimade' " Fade Inactive Buffers
 Plug 'lilydjwg/colorizer'
 " Plug 'tribela/vim-transparent'
 " Transparent[Enable, Disable, Toggle]

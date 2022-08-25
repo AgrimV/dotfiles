@@ -6,18 +6,8 @@ draw_bold_text_with_bright_colors: true
 
 font:
   normal:
-    family: agave Nerd Font
-    style: Regular 
-  bold:
-    family: agave Nerd Font
-    style: Bold 
-  # italic:
-  #   family:
-  #   style:
-  # bold_italic:
-  #   family:
-  #   style:
-  size: 16
+    family: Fira Mono Nerd Font
+  size: 14
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
