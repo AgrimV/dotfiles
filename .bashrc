@@ -56,8 +56,22 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Cold Blue Forest
+# Active Hint Color: #5881A9
+# USER_COLOR='[01;94m'
+# DIR_COLOR='[01;96m'
+# PROMPT_COLOR='[01;97m'
+# CMD_COLOR='[00;97m'
+
+# CodeName Red
+# Active Hint Color: #ffcc33
+USER_COLOR='[01;91m'
+DIR_COLOR='[01;93m'
+PROMPT_COLOR='[01;90m'
+CMD_COLOR='[00;33m'
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;94m\]\u@\h\[\033[01;94m\]:\[\033[01;96m\]\w\[\033[01;97m\]\$\[\033[00;97m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033$USER_COLOR\]\u@\h\[\033$USER_COLOR\]:\[\033$DIR_COLOR\]\w\[\033$PROMPT_COLOR\]\$\[\033$CMD_COLOR\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
