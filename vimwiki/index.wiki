@@ -1,8 +1,13 @@
 = self =
 	- web dev
-		* complete the todo
 	- pygame
 	- _italic_ comments in *vim*
+	- completion with tab
+
+= ge =
+	- get textures to work
+	- remove *Z* component
+	- check vertex array objects
 
 = scapp =
 	- past ride widget

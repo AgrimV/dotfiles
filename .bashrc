@@ -65,10 +65,10 @@ fi
 
 # CodeName Red
 # Active Hint Color: #ffcc33
-USER_COLOR='[01;91m'
-DIR_COLOR='[01;93m'
-PROMPT_COLOR='[01;90m'
-CMD_COLOR='[00;33m'
+USER_COLOR='[01;93m'
+DIR_COLOR='[01;91m'
+PROMPT_COLOR='[01;93m'
+CMD_COLOR='[00;97m'
 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033$USER_COLOR\]\u@\h\[\033$USER_COLOR\]:\[\033$DIR_COLOR\]\w\[\033$PROMPT_COLOR\]\$\[\033$CMD_COLOR\] '

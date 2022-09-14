@@ -45,6 +45,9 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs'}
 Plug 'jparise/vim-graphql',  { 'for': 'graphql' }
 Plug 'AgrimV/hot-reload.vim', { 'for': 'dart' }
 
+" OpenGL Shaders
+Plug 'tikhomirov/vim-glsl'
+
 " Web
 Plug 'skammer/vim-css-color'
 
