@@ -8,7 +8,7 @@ set background=dark
 set termguicolors
 
 " italic comments
-autocmd ColorScheme badwolf hi Comment cterm=italic gui=italic
+autocmd ColorScheme * hi Comment cterm=italic gui=italic
 colorscheme badwolf
 
 " afterglow exlusive 
