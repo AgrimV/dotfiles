@@ -1,8 +1,7 @@
 = self =
 	- web dev
+		* passport sessions not working (*passport.authenticate()*)
 	- pygame
-	- _italic_ comments in *vim*
-	- completion with tab
 
 = ge =
 	- get textures to work
@@ -17,6 +16,9 @@
 = vestudy =
 	- multiple environment handling
 	- error snackbars might be errors
+	- remove any 0xFF occurrence
+	- refprofile: slivers still required?
+	- remove PulsatingButton
 	- dispose of any used ids
 	{{{
 		ffmpeg -y -i videoplayback.mp4 -vf scale=1920:-2:flags=lanczos -c:v libx264 -preset medium -g 48 -sc_threshold 0 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -s:v:0 640x360 -c:v:0 libx264 -b:v:0 365k -s:v:1 960x540 -c:v:1 libx264 -b:v:1 1200k -s:v:2 1280x720 -c:v:2 libx264 -b:v:2 2000k ' -s:v:3 1920x1080 -c:v:3 libx264 -b:v:3 4000k -c:a copy -var_stream_map "v:0,a:0 v:1,a:1 v:2,a:2 v:3,a:3" -master_pl_name master.m3u8 -f hls -hls_time 6 -hls_list_size 0 -hls_segment_filename "./%v_fileSequence_%d.ts" ./%v_playlistVariant.m3u8

@@ -7,7 +7,9 @@ let g:toggleHighlightWhitespace=0
 set background=dark
 set termguicolors
 
-colo badwolf
+" italic comments
+autocmd ColorScheme badwolf hi Comment cterm=italic gui=italic
+colorscheme badwolf
 
 " afterglow exlusive 
 " let g:afterglow_blackout=1
