@@ -5,6 +5,7 @@ set noshowmode
 let g:lightline = {}
 
 let g:lightline = {
+      \ 'colorscheme': 'deus',
 	  \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'modified' ] ],
@@ -16,7 +17,8 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
-      \ 'colorscheme': 'deus',
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ }
 
 let g:lightline.component_expand = {
