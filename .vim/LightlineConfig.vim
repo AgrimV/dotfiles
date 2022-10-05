@@ -1,4 +1,5 @@
 set laststatus=2
+set showtabline=2
 set noshowmode
 
 let g:lightline = {}
@@ -6,7 +7,7 @@ let g:lightline = {}
 let g:lightline = {
 	  \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \             [ 'gitbranch', 'readonly', 'modified' ] ],
 	  \   'right': [ [ 'linter_checking', 'linter_errors',
 	  \				'linter_warnings', 'linter_infos', 'linter_ok' ], 
 	  \				[ 'lineinfo' ],

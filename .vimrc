@@ -9,11 +9,7 @@ set termguicolors
 
 " italic comments
 autocmd ColorScheme * hi Comment cterm=italic gui=italic
-colorscheme badwolf
-
-" afterglow exlusive 
-" let g:afterglow_blackout=1
-" let g:afterglow_italic_comments=1
+colorscheme badwolf 
 
 au Filetype vimwiki let b:autopairs_loaded=1
 
@@ -21,10 +17,6 @@ nmap a :q
 nmap w :w<Enter>
 
 syntax on
-
-" set cursorline
-" hi clear CursorLine
-" hi CursorLine gui=underline cterm=underline
 
 nmap <Tab> gt
 nmap <C-x> :tabedit 
