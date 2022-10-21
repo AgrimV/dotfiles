@@ -9,7 +9,7 @@ set termguicolors
 
 " italic comments
 autocmd ColorScheme * hi Comment cterm=italic gui=italic
-colorscheme badwolf 
+colorscheme bluechia
 
 au Filetype vimwiki let b:autopairs_loaded=1
 
@@ -152,7 +152,7 @@ nnoremap zk :res -5<Enter>
 nnoremap <Esc>[1;3A ddkP
 nnoremap <Esc>[1;3B ddjP
 nnoremap py viwpyiw
-nnoremap Fp :echo @%<Enter>
+nnoremap Fp :echo expand('%')<Enter>
 nnoremap FP :echo expand('%:p')<Enter>
 
 source ~/.vim/Plugins.vim
