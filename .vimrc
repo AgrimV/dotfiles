@@ -4,12 +4,16 @@ set ma
 " highlight trailing space NOT
 let g:toggleHighlightWhitespace=0
 
+" set Termdebug orientation
+let g:termdebug_wide=1
+
 set background=dark
 set termguicolors
 
 " italic comments
 autocmd ColorScheme * hi Comment cterm=italic gui=italic
-colorscheme bluechia
+" colorscheme bluechia
+colorscheme badwolf
 
 au Filetype vimwiki let b:autopairs_loaded=1
 

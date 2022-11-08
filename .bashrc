@@ -169,6 +169,7 @@ alias sa='cd ~/Documents/Web/sw-api/'
 
 alias ge='cd ~/Documents/C++/grond-engine'
 
+alias mp='cd ~/Documents/C++/Memory-Manager/'
 alias mqtt='sudo service mosquitto start'
 alias mqt='sudo service mosquitto stop'
 
@@ -194,6 +195,9 @@ cat ~/.cache/wal/sequences
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
+
+SUDO_EDITOR=/usr/local/bin/vim
+export SUDO_EDITOR
 
 # Not for Neovim
 export NVM_DIR="$HOME/.nvm"

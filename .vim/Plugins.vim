@@ -50,6 +50,7 @@ Plug 'tikhomirov/vim-glsl'
 
 " Web
 Plug 'skammer/vim-css-color'
+Plug 'mattn/emmet-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
