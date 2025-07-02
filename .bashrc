@@ -118,10 +118,6 @@ fi
 
 # . "$HOME/.cargo/env"
 
-# Finding in Files
-alias search=~/Documents/Bash/Search/search.sh
-# grep -rnw '/path' -e 'text'
-
 # VimUnity
 alias uvi=~/Documents/Bash/VimUnity/unity.sh
 
@@ -129,74 +125,9 @@ alias uvi=~/Documents/Bash/VimUnity/unity.sh
 # xrandr --output HDMI-1-1 --off
 
 # Git
-alias dot='/usr/bin/git --git-dir=$HOME/Documents/dotfiles/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/Downloads/dotfiles.git/ --work-tree=$HOME'
 
-# Python Virtual Environments
-alias create='python3 -m venv venv'
-alias activate='source venv/bin/activate'
-
-
-# React-Native
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-alias metro="npx react-native start"
-alias nun="npx react-native run-android"
-
-# Flutter
-# Create symlink of flutter binary at /usr/bin/
-export PATH="$PATH:~/Android/Sdk/emulator:~/.pub-cache/bin/flutterfire"
-alias pix3a="emulator -avd Pixel_3a_API_31 &> /dev/null &"
-
-alias ..='cd ..'
-alias vim='vim -p'
-alias cl='clear'
-alias ar='sudo apt autoremove -y'
-alias vim_up=./.vim_up.sh
-export UNITYPROJECTPATH="/home/agrimv/Documents/Unity"
-
-alias vs='cd ~/Documents/Flutter/VStudy'
-export AWS_PASS="=P&fxE7#H!AnBec"
-alias awsconf='amplify configure --appId d3tjez39k1u8ck --envName dev'
-
-alias nmon='nodemon'
-
-alias sc='cd ~/Documents/Flutter/sw-customer-flutter-app'
-alias sv='cd ~/Documents/Flutter/sw-vendor-app'
-alias sa='cd ~/Documents/Web/sw-api/'
-
-alias ge='cd ~/Documents/C++/grond-engine'
-
-alias mp='cd ~/Documents/C++/Memory-Manager/'
-alias mqtt='sudo service mosquitto start'
-alias mqt='sudo service mosquitto stop'
-
-alias serve='browser-sync start --server --files .'
-# export SERVER_IP=`hostname -I`
-# alias serve="browser-sync start --server --files . --no-notify --host $SERVER_IP --port 900
-
-# Fastlane
-export GEM_HOME=~/.gems
-export PATH=$PATH:~/.gems/bin
-alias fastlane='bundle exec fastlane'
-
-# pywal
-# Import colorscheme from 'wal' asynchronously
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-# Not supported in the "fish" shell.
-(cat ~/.cache/wal/sequences &)
-
-# Alternative (blocks terminal for 0-3ms)
-cat ~/.cache/wal/sequences
-
-# To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
-
-
-SUDO_EDITOR=/usr/local/bin/vim
+SUDO_EDITOR=/usr/local/bin/nvim
 export SUDO_EDITOR
 
 # Not for Neovim

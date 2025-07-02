@@ -31,7 +31,5 @@ opt.signcolumn = 'yes'
 opt.completeopt = 'menu,menuone,noselect'
 opt.background = 'dark'
 opt.iskeyword:append({ '-' })
--- Look for alternative
-cmd [[ colorscheme nightfox ]]
 -- Gray Italic Comments
 vim.api.nvim_set_hl(0, 'Comment', { italic=true, fg="#696969" })
