@@ -1,6 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = "reload_nord"
+
 format = """
 [](blue)\
 $directory\
@@ -10,7 +12,6 @@ $sudo\
 $line_break\
 [](white)\
 $shell\
-[ ](bg:white)\
 [ ](fg:white)\
 """
 
@@ -30,7 +31,7 @@ read_only_style = 'bg:blue fg:bold white'
 
 [sudo]
 disabled = false
-format = '[ ]($style)'
+format = '[]($style)'
 style = 'bg:white fg:blue'
 
 [git_branch]
@@ -52,3 +53,9 @@ disabled = false
 fish_indicator = ''
 format = '[$indicator]($style)'
 style = 'fg:blue bg:white'
+
+[palettes.reload_nord]
+blue = "#1269cc"
+white = "#eceff4"
+green = "#22cb00"
+red = "#c30000"

@@ -4,6 +4,7 @@ if status is-interactive
 	end
 
 	alias dot='/usr/bin/git --git-dir=$HOME/Downloads/dotfiles.git/ --work-tree=$HOME'
+	alias nvim='nvim -p'
 
 	starship init fish | source
 end
