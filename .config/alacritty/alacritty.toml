@@ -1,16 +1,16 @@
 [colors]
+primary.background = "#00022e"
 draw_bold_text_with_bright_colors = true
 
 [font]
 size = 14
 
 [font.normal]
-family = "Fira Mono Nerd Font"
-
-[[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = "F11"
+family = "AnonymicePro Nerd Font Mono"
 
 [window]
 decorations = "None"
-opacity = 0.8
+opacity = 0.4
+
+[cursor]
+style = { shape = "Block", blinking = "Never"}
