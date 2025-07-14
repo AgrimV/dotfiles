@@ -69,32 +69,11 @@ require("lazy").setup({
   },
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
 
-  -- Colorschemes
-  {'joshdick/onedark.vim'},
-  {'arzg/vim-colors-xcode'},
-  {'yuqio/vim-darkspace'},
-  {'NLKNguyen/papercolor-theme'},
-  {'tomasiser/vim-code-dark'},
-  {'danilo-augusto/vim-afterglow'},
-  {'liuchengxu/space-vim-dark'},
-  {'crusoexia/vim-monokai'},
-  {'flazz/vim-colorschemes'},
-  {'morhetz/gruvbox'},
-  {'catppuccin/vim'},
-  {'EdenEast/nightfox.nvim'},
-  {'folke/tokyonight.nvim'},
-  {'JoosepAlviste/palenightfall.nvim'},
-  {
-    'uloco/bluloco.nvim',
-    dependencies = { 'rktjmp/lush.nvim' }
+  -- Colorscheme
+  { "EdenEast/nightfox.nvim" },
+  { "tanvirtin/monokai.nvim" },
   },
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  --install = { colorscheme = { "tokyonight-night" } }, -- maybe look for better
-  -- automatically check for plugin updates
   checker = { enabled = true },
 })
 
--- Look for alternative
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd("colorscheme monokai")
