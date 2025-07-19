@@ -8,3 +8,5 @@ opt.cmdheight = 2
 opt.signcolumn = 'yes'
 opt.completeopt = 'menu,menuone,noselect,preview'
 opt.iskeyword:append({ '-' })
+opt.expandtab = true
+opt.shiftwidth = 4

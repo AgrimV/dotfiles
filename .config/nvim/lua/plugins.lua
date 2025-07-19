@@ -24,22 +24,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-  -- Colorschemes
-  {'ofirgall/ofirkai.nvim'},
+    -- Colorschemes
+    {'ofirgall/ofirkai.nvim'},
 
-  -- General
-  {
-  'nvim-tree/nvim-tree.lua',
-  dependencies = {
+    -- General
+    {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
     'nvim-tree/nvim-web-devicons',
     },
-  },
-  {
+    },
+    {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
-  },
+    },
 
-  -- Coding
+    -- Coding
   },
   checker = { enabled = true },
 })

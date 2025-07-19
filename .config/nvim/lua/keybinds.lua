@@ -1,9 +1,9 @@
 local function map(mode, key, value, opts)
-	local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, key, value, options)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, key, value, options)
 end
 
 map('n', '<Tab>', ':tabnext<Enter>')
