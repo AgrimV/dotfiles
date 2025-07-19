@@ -25,21 +25,14 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {'location'}
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
+  inactive_sections = {},
   tabline = {
-    lualine_a = {'tabs'},
+    lualine_a = { {'tabs', mode = 2} },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'filename'},
+    lualine_z = {},
   },
   winbar = {},
   inactive_winbar = {},
