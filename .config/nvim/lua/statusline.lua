@@ -1,9 +1,9 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'nightfly',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    theme = 'ayu_dark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {'NvimTree'},
       winbar = {'NvimTree'},
@@ -21,7 +21,6 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = { {'branch', icon = ''} },
     lualine_c = {'diagnostics'},
-	-- 'fileformat' for OS icon
     lualine_x = {'diff'},
     lualine_y = {},
     lualine_z = {'location'}
@@ -35,12 +34,12 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {},
-    lualine_b = {'filename'},
+    lualine_a = {'tabs'},
+    lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'tabs'},
+    lualine_z = {'filename'},
   },
   winbar = {},
   inactive_winbar = {},

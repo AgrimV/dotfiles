@@ -24,56 +24,24 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+  -- Colorschemes
+  {'ofirgall/ofirkai.nvim'},
+
   -- General
-  {'neovim/nvim-lspconfig'},
-  {'williamboman/mason.nvim'},
-  {'nvim-treesitter/nvim-treesitter'},
   {
   'nvim-tree/nvim-tree.lua',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
     },
   },
-  {'hrsh7th/nvim-cmp'},
-  {
-	"L3MON4D3/LuaSnip",
-	-- follow latest release. currently 2.4.0
-	version = "v2.*",
-  },
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'terrortylor/nvim-comment'},
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-  },
-  {'windwp/nvim-autopairs'},
-  {
-    'kylechui/nvim-surround',
-	event = "VeryLazy",
-  },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  { 'nvim-telescope/telescope-fzf-native.nvim',
-  build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'   },
-  {
-      'nvim-telescope/telescope.nvim',
-      version = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
 
-  -- Colorscheme
-  { "EdenEast/nightfox.nvim" },
-  { "tanvirtin/monokai.nvim" },
+  -- Coding
   },
   checker = { enabled = true },
 })
 
-vim.cmd("colorscheme monokai")
+vim.cmd("colorscheme ofirkai")
