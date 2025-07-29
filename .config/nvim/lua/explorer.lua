@@ -15,6 +15,6 @@ local function my_on_attach(bufnr)
   vim.keymap.set("n", "<C-t>", nvim_tree_api.node.open.edit, opts "Open")
 end
 
-require("nvim-tree").setup{
+require("nvim-tree").setup {
   on_attach = my_on_attach,
 }

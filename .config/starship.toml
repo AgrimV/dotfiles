@@ -6,9 +6,7 @@ palette = "reload_nord"
 format = """
 [](blue)\
 $directory\
-[](fg:blue bg:white)\
-$sudo\
-[](fg:white)\
+[](fg:blue)\
 $line_break\
 [](white)\
 $shell\
@@ -28,11 +26,6 @@ truncation_length = 0
 truncate_to_repo = false
 style = 'bg:blue fg:bold white'
 read_only_style = 'bg:blue fg:bold white'
-
-[sudo]
-disabled = false
-format = '[]($style)'
-style = 'bg:white fg:blue'
 
 [git_branch]
 format = '[$symbol$branch ]($style)'
@@ -56,6 +49,7 @@ style = 'fg:blue bg:white'
 
 [palettes.reload_nord]
 blue = "#1269cc"
+# white = "#e4f3ff"
 white = "#eceff4"
 green = "#22cb00"
 red = "#c30000"
