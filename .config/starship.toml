@@ -1,14 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = "reload_nord"
+palette = "custom"
 
 format = """
-[](blue)\
+[ ](bg:blue)\
 $directory\
 [](fg:blue)\
 $line_break\
-[](white)\
+[ ](bg:white)\
 $shell\
 [ ](fg:white)\
 """
@@ -47,7 +47,7 @@ fish_indicator = ''
 format = '[$indicator]($style)'
 style = 'fg:blue bg:white'
 
-[palettes.reload_nord]
+[palettes.custom]
 blue = "#1269cc"
 # white = "#e4f3ff"
 white = "#eceff4"
