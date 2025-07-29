@@ -28,15 +28,25 @@ require("lazy").setup {
 
         -- General
         {
-            "nvim-tree/nvim-tree.lua",
-            dependencies = {
-                "nvim-tree/nvim-web-devicons",
-            },
-        },
-        {
             "nvim-lualine/lualine.nvim",
             dependencies = { 
                 "nvim-tree/nvim-web-devicons", lazy = true 
+            },
+        },
+        {
+            "A7Lavinraj/fyler.nvim",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            branch = "stable",
+            opts = {
+                icon_provider = "nvim-web-devicons",
+                views = {
+                    explorer = {
+                        width = 0.33,
+                    },
+                    confirm = {
+                        border = "none",
+                    },
+                },
             },
         },
 
