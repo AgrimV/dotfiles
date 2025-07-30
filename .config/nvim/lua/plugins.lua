@@ -43,9 +43,6 @@ require("lazy").setup {
                     explorer = {
                         width = 0.33,
                     },
-                    confirm = {
-                        border = "none",
-                    },
                 },
             },
         },
@@ -63,6 +60,9 @@ require("lazy").setup {
             dependencies = {
                 "nvim-treesitter/nvim-treesitter",
             },
+        },
+        {
+            "neovim/nvim-lspconfig",
         },
     },
     checker = { enabled = true },

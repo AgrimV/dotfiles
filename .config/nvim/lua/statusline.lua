@@ -21,8 +21,8 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = { {'branch', icon = ''} },
     lualine_c = {'diagnostics'},
-    lualine_x = {'diff'},
-    lualine_y = {},
+    lualine_x = {},
+    lualine_y = {'diff'},
     lualine_z = {'location'}
   },
   inactive_sections = {},

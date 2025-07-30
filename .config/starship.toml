@@ -20,7 +20,7 @@ $git_branch\
 """
 
 [directory]
-format = '[$path]($style)[$read_only](blue)'
+format = '[$path]($style)[ $read_only](fg:white bg:blue)'
 repo_root_format = '[$path](bold red)[$read_only](blue)'
 truncation_length = 0
 truncate_to_repo = false
@@ -49,7 +49,6 @@ style = 'fg:blue bg:white'
 
 [palettes.custom]
 blue = "#1269cc"
-# white = "#e4f3ff"
 white = "#eceff4"
 green = "#22cb00"
 red = "#c30000"
