@@ -29,19 +29,30 @@ require("lazy").setup {
         -- General
         {
             "nvim-lualine/lualine.nvim",
-            dependencies = { 
-                "nvim-tree/nvim-web-devicons", lazy = true 
+            dependencies = {
+                "nvim-tree/nvim-web-devicons", lazy = true,
             },
         },
         {
-            "A7Lavinraj/fyler.nvim",
+            "AgrimV/fyler.nvim",
             dependencies = { "nvim-tree/nvim-web-devicons" },
-            branch = "stable",
+            branch = "tabedit-files",
             opts = {
                 icon_provider = "nvim-web-devicons",
+                mappings = {
+                    explorer = {
+                        ["<CR>"] = "NewTab",
+                        ["<C-t>"] = "Select",
+                    },
+                },
                 views = {
                     explorer = {
-                        width = 0.33,
+                        win = {
+                            kind = "split_left_most",
+                            split_left_most = {
+                                width = 0.33,
+                            },
+                        },
                     },
                 },
             },
@@ -63,6 +74,9 @@ require("lazy").setup {
         },
         {
             "neovim/nvim-lspconfig",
+            config = function()
+                require("lsp")
+            end
         },
     },
     checker = { enabled = true },
