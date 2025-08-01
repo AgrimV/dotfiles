@@ -117,13 +117,6 @@ require("lazy").setup({
                         delay = 0,
                         animation = require("mini.indentscope").gen_animation.none(),
                     },
-                    mappings = {
-                        object_scope = "ii",
-                        object_scope_with_border = "ai",
-
-                        goto_top = "[i",
-                        goto_bottom = "]i",
-                    },
                 })
                 require("mini.surround").setup()
             end,
@@ -141,6 +134,12 @@ require("lazy").setup({
                 completion = { documentation = { auto_show = true } },
             },
             opts_extend = { "sources.default" },
+        },
+        {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+            config = true,
+            opts = {},
         },
     },
     checker = { enabled = true },
