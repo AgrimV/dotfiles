@@ -1,7 +1,4 @@
 require("options")
 require("plugins")
-require("utils")
 require("keybinds")
 require("statusline")
-require("tele")
-require("completion")

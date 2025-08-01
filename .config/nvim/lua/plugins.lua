@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
-require("lazy").setup {
+require("lazy").setup({
     spec = {
         -- Colorschemes
         {
@@ -30,18 +30,26 @@ require("lazy").setup {
         {
             "nvim-lualine/lualine.nvim",
             dependencies = {
-                "nvim-tree/nvim-web-devicons", lazy = true,
+                "nvim-tree/nvim-web-devicons",
+                lazy = true,
             },
         },
         {
-            "AgrimV/fyler.nvim",
+            "NeogitOrg/neogit",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "sindrets/diffview.nvim",
+                "echasnovski/mini.pick",
+            },
+        },
+        {
+            "A7Lavinraj/fyler.nvim",
             dependencies = { "nvim-tree/nvim-web-devicons" },
-            branch = "tabedit-files",
             opts = {
                 icon_provider = "nvim-web-devicons",
                 mappings = {
                     explorer = {
-                        ["<CR>"] = "NewTab",
+                        ["<CR>"] = "SelectTab",
                         ["<C-t>"] = "Select",
                     },
                 },
@@ -49,8 +57,10 @@ require("lazy").setup {
                     explorer = {
                         win = {
                             kind = "split_left_most",
-                            split_left_most = {
-                                width = 0.33,
+                            kind_presets = {
+                                split_left_most = {
+                                    width = 0.33,
+                                },
                             },
                         },
                     },
@@ -61,10 +71,12 @@ require("lazy").setup {
         -- Coding
         {
             "nvim-treesitter/nvim-treesitter",
-            branch = "master", lazy = false, build = ":TSUpdate",
-            config = function () 
+            branch = "master",
+            lazy = false,
+            build = ":TSUpdate",
+            config = function()
                 require("treesitter")
-            end
+            end,
         },
         {
             "nvim-treesitter/nvim-treesitter-textobjects",
@@ -76,8 +88,60 @@ require("lazy").setup {
             "neovim/nvim-lspconfig",
             config = function()
                 require("lsp")
-            end
+            end,
+        },
+        {
+            "mason-org/mason.nvim",
+            opts = {},
+        },
+        {
+            "stevearc/conform.nvim",
+            opts = {
+                formatters_by_ft = {
+                    lua = { "stylua" },
+                    -- javascript = { "prettierd", "prettier", stop_after_first = true },
+                },
+                format_on_save = {
+                    timeout_ms = 500,
+                    lsp_format = "fallback",
+                },
+            },
+        },
+        {
+            "echasnovski/mini.nvim",
+            version = "*",
+            config = function()
+                require("mini.pick").setup()
+                require("mini.indentscope").setup({
+                    draw = {
+                        delay = 0,
+                        animation = require("mini.indentscope").gen_animation.none(),
+                    },
+                    mappings = {
+                        object_scope = "ii",
+                        object_scope_with_border = "ai",
+
+                        goto_top = "[i",
+                        goto_bottom = "]i",
+                    },
+                })
+                require("mini.surround").setup()
+            end,
+        },
+        {
+            "saghen/blink.cmp",
+            dependencies = { "rafamadriz/friendly-snippets" },
+
+            version = "1.*",
+
+            ---@module 'blink.cmp'
+            ---@type blink.cmp.Config
+            opts = {
+                keymap = { preset = "super-tab" },
+                completion = { documentation = { auto_show = true } },
+            },
+            opts_extend = { "sources.default" },
         },
     },
     checker = { enabled = true },
-}
+})
