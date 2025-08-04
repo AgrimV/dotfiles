@@ -27,5 +27,5 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 map("v", "p", '"_dP')
 
-map("n", "<C-o>", ":Fyler<Enter>")
+map("n", "<C-o>", ":Fyler kind=split_left_most<Enter>")
 map("n", "<Leader>ff", ":Pick grep_live<CR>")

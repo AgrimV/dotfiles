@@ -35,34 +35,18 @@ require("lazy").setup({
             },
         },
         {
-            "NeogitOrg/neogit",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "sindrets/diffview.nvim",
-                "echasnovski/mini.pick",
-            },
+            "norcalli/nvim-colorizer.lua",
+            opts = {},
         },
         {
-            "A7Lavinraj/fyler.nvim",
+            "AgrimV/fyler.nvim",
             dependencies = { "nvim-tree/nvim-web-devicons" },
             opts = {
                 icon_provider = "nvim-web-devicons",
                 mappings = {
                     explorer = {
-                        ["<CR>"] = "SelectTab",
                         ["<C-t>"] = "Select",
-                    },
-                },
-                views = {
-                    explorer = {
-                        win = {
-                            kind = "split_left_most",
-                            kind_presets = {
-                                split_left_most = {
-                                    width = 0.33,
-                                },
-                            },
-                        },
+                        ["<CR>"] = "SelectTab",
                     },
                 },
             },
@@ -111,10 +95,15 @@ require("lazy").setup({
             "echasnovski/mini.nvim",
             version = "*",
             config = function()
-                require("mini.pick").setup()
+                require("mini.pick").setup({
+                    mappings = {
+                        choose = "<C-t>",
+                        choose_in_tabpage = "<CR>",
+                    },
+                })
                 require("mini.indentscope").setup({
                     draw = {
-                        delay = 0,
+                        delay = 1,
                         animation = require("mini.indentscope").gen_animation.none(),
                     },
                 })
