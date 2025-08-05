@@ -6,7 +6,9 @@ palette = "custom"
 format = """
 [ ](bg:blue)\
 $directory\
-[](fg:blue)\
+[](fg:blue bg:white)\
+$git_branch\
+[](fg:white)\
 $line_break\
 [ ](bg:white)\
 $shell\
@@ -16,7 +18,6 @@ $shell\
 right_format = """
 $git_metrics\
 $git_commit\
-$git_branch\
 """
 
 [directory]
@@ -28,18 +29,19 @@ style = 'bg:blue fg:bold white'
 read_only_style = 'bg:blue fg:bold white'
 
 [git_branch]
-format = '[$symbol$branch ]($style)'
+format = '[ $symbol$branch ]($style)'
 symbol = ' '
-style = 'blue'
-
-[git_commit]
-format = ' at [$hash $tag]($style)'
-style = 'blue'
+style = 'fg:blue bg:white'
 
 [git_metrics]
 disabled = false
-added_style = 'green'
-deleted_style = 'red'
+format = '([](fg:white)[+$added]($added_style)[-$deleted]($deleted_style))'
+added_style = 'fg:green bg:white'
+deleted_style = 'fg:red bg:white'
+
+[git_commit]
+format = ' at [$hash $tag]($style)'
+style = 'white'
 
 [shell]
 disabled = false
