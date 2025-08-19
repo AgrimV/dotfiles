@@ -35,15 +35,6 @@ require("lazy").setup({
       },
     },
     {
-      "brenoprata10/nvim-highlight-colors",
-      opts = {
-        render = "virtual",
-        virtual_symbol = "",
-        exclude_filetypes = {},
-        exclude_buftypes = {},
-      },
-    },
-    {
       "AgrimV/fyler.nvim",
       dependencies = { "nvim-tree/nvim-web-devicons" },
       opts = {
@@ -112,7 +103,12 @@ require("lazy").setup({
             animation = require("mini.indentscope").gen_animation.none(),
           },
         })
-        require("mini.surround").setup()
+        require("mini.hipatterns").setup({
+          highlighters = {
+            hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+          },
+        })
+        require("mini.surround").setup({})
       end,
     },
     {
@@ -126,6 +122,7 @@ require("lazy").setup({
       opts = {
         keymap = { preset = "super-tab" },
         completion = { documentation = { auto_show = true } },
+        signature = { enabled = true },
       },
       opts_extend = { "sources.default" },
     },

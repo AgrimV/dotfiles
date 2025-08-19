@@ -14,12 +14,14 @@ opt.termguicolors = true
 opt.winborder = "rounded"
 opt.swapfile = false
 opt.switchbuf = "usetab,newtab"
+opt.ignorecase = true
+opt.smartcase = true
 
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = " "
 
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_lines = { current_line = true },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
