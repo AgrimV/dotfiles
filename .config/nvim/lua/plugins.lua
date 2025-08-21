@@ -34,19 +34,6 @@ require("lazy").setup({
         lazy = true,
       },
     },
-    {
-      "AgrimV/fyler.nvim",
-      dependencies = { "nvim-tree/nvim-web-devicons" },
-      opts = {
-        icon_provider = "nvim-web-devicons",
-        mappings = {
-          explorer = {
-            ["<C-t>"] = "Select",
-            ["<CR>"] = "SelectTab",
-          },
-        },
-      },
-    },
 
     -- Coding
     {
@@ -91,12 +78,7 @@ require("lazy").setup({
       "echasnovski/mini.nvim",
       version = "*",
       config = function()
-        require("mini.pick").setup({
-          mappings = {
-            choose = "<C-t>",
-            choose_in_tabpage = "<CR>",
-          },
-        })
+        require("mini.pick").setup({})
         require("mini.indentscope").setup({
           draw = {
             delay = 1,
@@ -109,6 +91,7 @@ require("lazy").setup({
           },
         })
         require("mini.surround").setup({})
+        require("mini.files").setup({})
       end,
     },
     {

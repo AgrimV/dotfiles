@@ -32,7 +32,17 @@ require("lualine").setup({
   },
   inactive_sections = {},
   tabline = {
-    lualine_a = { { "tabs", mode = 2 } },
+    lualine_a = {
+      {
+        "buffers",
+        mode = 0,
+        max_length = vim.o.columns,
+        symbols = {
+          modified = " ",
+          alternate_file = "",
+        },
+      },
+    },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
