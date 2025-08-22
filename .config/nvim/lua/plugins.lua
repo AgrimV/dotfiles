@@ -20,19 +20,23 @@ require("lazy").setup({
   spec = {
     -- Colorschemes
     {
-      "ofirgall/ofirkai.nvim",
+      "AgrimV/cyanide.nvim",
       config = function()
-        vim.cmd("colorscheme ofirkai")
+        vim.cmd("colorscheme cyanide")
       end,
     },
 
     -- General
     {
       "nvim-lualine/lualine.nvim",
-      dependencies = {
-        "nvim-tree/nvim-web-devicons",
-        lazy = true,
-      },
+      -- dependencies = {
+      --   "echasnovski/mini.icons",
+      --   lazy = true,
+      -- },
+      -- dependencies = {
+      --   "nvim-tree/nvim-web-devicons",
+      --   lazy = true,
+      -- },
     },
 
     -- Coding
@@ -78,7 +82,14 @@ require("lazy").setup({
       "echasnovski/mini.nvim",
       version = "*",
       config = function()
-        require("mini.pick").setup({})
+        require("mini.icons").setup()
+        require("mini.surround").setup({})
+        require("mini.pick").setup({
+          mappings = {
+            choose_in_tabpage = "<CR>",
+            choose = "<C-t>",
+          },
+        })
         require("mini.indentscope").setup({
           draw = {
             delay = 1,
@@ -90,8 +101,39 @@ require("lazy").setup({
             hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
           },
         })
-        require("mini.surround").setup({})
         require("mini.files").setup({})
+
+        local map_split = function(buf_id, key, close_after)
+          local open_file = function()
+            local fs_entry = MiniFiles.get_fs_entry()
+            if fs_entry.fs_type == "directory" then
+              MiniFiles.go_in()
+              return
+            end
+
+            local cur_target = MiniFiles.get_explorer_state().target_window
+            local new_target = vim.api.nvim_win_call(cur_target, function()
+              vim.cmd("tab split")
+              return vim.api.nvim_get_current_win()
+            end)
+
+            MiniFiles.set_target_window(new_target)
+            MiniFiles.go_in({
+              close_on_file = close_after,
+            })
+          end
+
+          vim.keymap.set("n", key, open_file, { buffer = buf_id })
+        end
+
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "MiniFilesBufferCreate",
+          callback = function(args)
+            local buf_id = args.data.buf_id
+            map_split(buf_id, "l", true)
+            map_split(buf_id, "L", false)
+          end,
+        })
       end,
     },
     {
