@@ -9,6 +9,7 @@ if status is-interactive
 	alias dot='/usr/bin/git --git-dir=$HOME/Downloads/dotfiles.git/ --work-tree=$HOME'
 
     # neovim
+    alias nvim="nvim -p"
     export EDITOR=nvim
     export SUDO_EDITOR=nvim
 

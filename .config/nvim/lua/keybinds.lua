@@ -6,8 +6,8 @@ local function map(mode, key, value, opts)
   vim.api.nvim_set_keymap(mode, key, value, options)
 end
 
-map("n", "<Tab>", ":bnext<Enter>")
-map("n", "<S-Tab>", ":bprev<Enter>")
+map("n", "<Tab>", ":tabnext<Enter>")
+map("n", "<S-Tab>", ":tabprev<Enter>")
 map("n", "j", "gj")
 map("n", "k", "gk")
 map("n", "<C-h>", "<C-w>h")

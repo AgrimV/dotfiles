@@ -1,21 +1,9 @@
 require("lualine").setup({
   options = {
-    icons_enabled = true,
     theme = "ayu_dark",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = {
-      statusline = { "NvimTree" },
-      winbar = { "NvimTree" },
-    },
-    ignore_focus = {},
     always_divide_middle = false,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    },
   },
   sections = {
     lualine_a = { {
@@ -34,13 +22,9 @@ require("lualine").setup({
   tabline = {
     lualine_a = {
       {
-        "buffers",
-        mode = 0,
-        max_length = vim.o.columns,
-        symbols = {
-          modified = " ",
-          alternate_file = "",
-        },
+        "tabs",
+        mode = 2,
+        icons_enabled = false,
       },
     },
     lualine_b = {},
