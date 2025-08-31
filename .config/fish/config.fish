@@ -7,6 +7,10 @@ if status is-interactive
     git config --global merge.tool nvimdiff
     git config --global mergetool.nvimdiff.layout LOCAL,MERGED,REMOTE
 	alias dot='/usr/bin/git --git-dir=$HOME/Downloads/dotfiles.git/ --work-tree=$HOME'
+    dot config --local status.showUntrackedFiles no
+
+    #alacritty
+    source "$HOME/.cargo/env.fish"
 
     # neovim
     alias nvim="nvim -p"
