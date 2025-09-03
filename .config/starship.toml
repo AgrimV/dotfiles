@@ -27,6 +27,7 @@ truncation_length = 0
 truncate_to_repo = false
 style = 'bg:blue fg:bold white'
 read_only_style = 'bg:blue fg:bold white'
+read_only = ''
 
 [git_branch]
 format = '[ $symbol$branch ]($style)'
