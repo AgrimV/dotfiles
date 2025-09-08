@@ -17,5 +17,8 @@ if status is-interactive
     export EDITOR=nvim
     export SUDO_EDITOR=nvim
 
+    # tmux colors
+    set -x TERM xterm-256color
+
 	starship init fish | source
 end
