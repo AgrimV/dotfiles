@@ -12,11 +12,11 @@ require("lualine").setup({
         return str:sub(1, 1)
       end,
     } },
-    lualine_b = { { "branch", icon = "" } },
-    lualine_c = { "diagnostics" },
-    lualine_x = {},
+    lualine_b = { "diagnostics" },
+    lualine_c = { "location" },
+    lualine_x = { "%S" },
     lualine_y = { "diff" },
-    lualine_z = { "location" },
+    lualine_z = { { "branch", icon = "" } },
   },
   inactive_sections = {},
   tabline = {

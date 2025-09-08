@@ -5,10 +5,6 @@ import Quickshell.Hyprland
 
 ShellRoot {
 
-    Component.onCompleted:
-    // initialize singletons here
-    {}
-
     PanelWindow {
         color: "black"
         visible: true
