@@ -18,6 +18,7 @@ $shell\
 right_format = """
 $git_metrics\
 $git_commit\
+$python\
 """
 
 [directory]
@@ -49,6 +50,11 @@ disabled = false
 fish_indicator = ''
 format = '[$indicator]($style)'
 style = 'fg:blue bg:white'
+
+[python]
+format = '[$symbol]($style) '
+style = 'green'
+symbol = '🐍'
 
 [palettes.custom]
 blue = "#1269cc"
