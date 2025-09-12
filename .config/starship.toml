@@ -52,9 +52,9 @@ format = '[$indicator]($style)'
 style = 'fg:blue bg:white'
 
 [python]
-format = '[$symbol]($style) '
-style = 'green'
-symbol = '🐍'
+format = '[$virtualenv]($style) '
+pyenv_version_name = true
+style = 'white bold'
 
 [palettes.custom]
 blue = "#1269cc"
