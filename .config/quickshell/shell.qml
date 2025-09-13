@@ -10,7 +10,6 @@ ShellRoot {
 
     PanelWindow {
         color: "transparent"
-        // color: "#000000"
 
         visible: true
 
@@ -48,7 +47,7 @@ ShellRoot {
                         height: 25
                         radius: 3
 
-                        color: is_active ? "#4fa3fd" : workspaceTextArea.containsMouse ? "#191919" : "#000000"
+                        color: is_active ? "#4fa3fd" : workspaceTextArea.containsMouse ? "#191919" : "transparent"
 
                         MouseArea {
                             id: workspaceTextArea
@@ -74,7 +73,7 @@ ShellRoot {
 
         Rectangle {
 
-            color: clockArea.pressed ? "#4fa3fd" : clockArea.containsMouse ? "#191919" : "#000000"
+            color: clockArea.pressed ? "#4fa3fd" : clockArea.containsMouse ? "#191919" : "transparent"
             anchors.centerIn: parent
 
             implicitHeight: 150
@@ -153,7 +152,7 @@ ShellRoot {
                         height: 25
                         radius: 3
 
-                        color: sysTrayItemArea.pressed ? "#4fa3fd" : sysTrayItemArea.containsMouse ? "#191919" : "#000000"
+                        color: sysTrayItemArea.pressed ? "#4fa3fd" : sysTrayItemArea.containsMouse ? "#191919" : "transparent"
 
                         IconImage {
                             id: icon
