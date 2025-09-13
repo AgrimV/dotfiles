@@ -1,3 +1,4 @@
+//@ pragma UseQApplication
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -197,14 +198,6 @@ ShellRoot {
                 }
             }
         }
-    }
-
-    component VerticalBarSeparator: Rectangle {
-        Layout.topMargin: 10
-        Layout.bottomMargin: 10
-        Layout.fillWidth: true
-        implicitHeight: 1
-        color: "#4fa3fd"
     }
 
     Singleton {

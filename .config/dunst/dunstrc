@@ -1,0 +1,53 @@
+[global]
+    follow = mouse
+
+    width = 200
+    height = (0,150)
+
+    origin = top-right
+    offset = (10, 30)
+
+    padding = 5
+    horizontal_padding = 5
+
+    frame_width = 2
+    frame_color = "#4fa4fd"
+    gap_size = 5
+
+    background = "#191919"
+
+    sort = true
+
+    font = AnonymicePro Nerd Font Mono 12
+
+    #   %a  appname
+    #   %s  summary
+    #   %b  body
+    #   %i  iconname (including its path)
+    #   %I  iconname (without its path)
+    #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
+    # Markup is allowed
+    format = "<u>%a</u>\n<b>%s</b>\n%b\n"
+
+    alignment = right
+
+    # dmenu path.
+    # dmenu = /usr/bin/dmenu -p dunst:
+    # dmenu = /usr/bin/wofi -d dunst:
+
+    # none: Don't do anything.
+    # do_action: Invoke the action determined by the action_name rule. If there is no
+    #            such action, open the context menu.
+    # open_url: If the notification has exactly one url, open it. If there are multiple
+    #           ones, open the context menu.
+    # close_current: Close current notification.
+    # close_all: Close all notifications.
+    # context: Open context menu for the notification.
+    # context_all: Open context menu for all notifications.
+    # * These values can be strung together for each mouse event, and
+    # * will be executed in sequence.
+    mouse_left_click = close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_all
