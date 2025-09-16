@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Io
 import Quickshell.Widgets
 import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
@@ -178,9 +179,9 @@ ShellRoot {
                         MouseArea {
                             id: sysTrayItemArea
                             anchors.fill: parent
+                            hoverEnabled: true
 
                             acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
-                            hoverEnabled: true
 
                             onClicked: event => {
                                 menuAnchor.open();
@@ -194,6 +195,54 @@ ShellRoot {
                             }
                         }
                     }
+                }
+            }
+
+            Rectangle {
+                property bool isCaffed: false
+
+                color: caffeineArea.containsMouse ? "#191919" : "transparent"
+                implicitHeight: 25
+                implicitWidth: 25
+
+                radius: 3
+
+                MouseArea {
+                    id: caffeineArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+
+                    acceptedButtons: Qt.LeftButton
+
+                    onClicked: event => {
+                        parent.isCaffed = !parent.isCaffed;
+
+                        if (parent.isCaffed)
+                            caf.running = true;
+                        else
+                            decaf.running = true;
+                    }
+                }
+
+                Process {
+                    id: caf
+                    running: false
+                    command: ["killall", "hypridle"]
+                }
+
+                Process {
+                    id: decaf
+                    running: false
+                    command: ["hyprctl", "dispatch", "exec", "hypridle"]
+                }
+
+                Text {
+                    text: parent.isCaffed ? "󰅶" : "󰾪"
+                    color: parent.isCaffed ? "#4fa3fd" : "white"
+
+                    font.pointSize: 13
+
+                    anchors.centerIn: parent
                 }
             }
         }
