@@ -217,9 +217,9 @@ ShellRoot {
                     onClicked: event => {
                         parent.isCaffed = !parent.isCaffed;
 
-                        if (parent.isCaffed)
-                            caf.running = true;
-                        else
+                        caf.running = true;
+
+                        if (!parent.isCaffed)
                             decaf.running = true;
                     }
                 }
