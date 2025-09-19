@@ -26,7 +26,7 @@
 }
  #text:selected {
      font-weight: 500;
-     color: {{colors.background.default.hex}};
+     color: {{colors.on_background.default.hex}};
      background-color: {{colors.source_color.default.hex}};
 }
  #text {
