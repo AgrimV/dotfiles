@@ -201,7 +201,7 @@ ShellRoot {
             Rectangle {
                 property bool isCaffed: false
 
-                color: caffeineArea.containsMouse ? "#191919" : "transparent"
+                color: caffeineArea.pressed ? isCaffed ? "white" : "#4fa3fd" : caffeineArea.containsMouse ? "#191919" : "transparent"
                 implicitHeight: 25
                 implicitWidth: 25
 
