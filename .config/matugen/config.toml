@@ -1,0 +1,18 @@
+[config]
+
+[templates.hyprland]
+input_path = './templates/hyprland_colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+[templates.wofi]
+input_path = './templates/wofi_style.css'
+output_path = '~/.config/wofi/style.css'
+
+[templates.starship]
+input_path = './templates/starship_template.toml'
+output_path = '~/.config/starship.toml'
+
+# [templates.eza]
+# input_path = './templates/eza_theme.yml'
+# output_path = '~/.config/eza/theme.yml'

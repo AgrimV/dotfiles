@@ -20,5 +20,12 @@ if status is-interactive
     # tmux colors
     set -x TERM xterm-256color
 
+    # eza
+    alias ls="eza --group-directories-first --time-style='+%d %b %y %H:%M'"
+    alias la='ls -a'
+    alias ll='ls -la'
+    alias lt='ls -T'
+    export EZA_CONFIG_DIR='~/.config/eza/'
+
 	starship init fish | source
 end

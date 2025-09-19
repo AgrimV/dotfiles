@@ -1,0 +1,63 @@
+# Get editor completions based on the config schema
+'$schema' = 'https://starship.rs/config-schema.json'
+
+palette = 'colors'
+
+format = """
+[ ](bg:color2)\
+$directory\
+[](fg:color2 bg:color1)\
+$git_branch\
+[](fg:color1)\
+$line_break\
+[ ](bg:color1)\
+$shell\
+[ ](fg:color1)\
+"""
+
+right_format = """
+$git_metrics\
+$git_commit\
+$python\
+"""
+
+[directory]
+format = '[$path]($style)[ $read_only](fg:color1 bg:color2)'
+repo_root_format = '[$path](bold red)[$read_only](color2)'
+truncation_length = 0
+truncate_to_repo = false
+style = 'bg:color2 fg:bold color1'
+read_only_style = 'bg:color2 fg:bold color1'
+read_only = ''
+
+[git_branch]
+format = '[ $symbol$branch ]($style)'
+symbol = ' '
+style = 'fg:color2 bg:color1'
+
+[git_metrics]
+disabled = false
+format = '([](fg:color1)[+$added]($added_style)[-$deleted]($deleted_style))'
+added_style = 'fg:green bg:color1'
+deleted_style = 'fg:red bg:color1'
+
+[git_commit]
+format = ' at [$hash $tag]($style)'
+style = 'color1'
+
+[shell]
+disabled = false
+fish_indicator = ''
+format = '[$indicator]($style)'
+style = 'fg:color2 bg:color1'
+
+[python]
+format = '[$virtualenv]($style) '
+pyenv_version_name = true
+style = 'color1 bold'
+
+[palettes.colors]
+color1 = '{{colors.on_surface_variant.default.hex}}'
+color2 = '{{colors.on_primary.default.hex}}'
+green = "#22cb00"
+red = "#c30000"
