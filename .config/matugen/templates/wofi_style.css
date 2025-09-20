@@ -3,32 +3,35 @@
      border: 2px solid {{colors.source_color.default.hex}};
      background-color: {{colors.background.default.hex}};
 }
- #input {
+#input {
+     margin: 5px;
+     border: 1px solid {{colors.source_color.default.hex}};
+     color: {{colors.on_background.default.hex}};
+     background-color: {{colors.background.default.hex}};
+}
+#inner-box {
      margin: 5px;
      background-color: {{colors.background.default.hex}};
 }
- #inner-box {
+#outer-box {
      margin: 5px;
      background-color: {{colors.background.default.hex}};
 }
- #outer-box {
-     margin: 5px;
+#scroll {
      background-color: {{colors.background.default.hex}};
 }
- #scroll {
+#entry {
      background-color: {{colors.background.default.hex}};
 }
- #entry {
-     background-color: {{colors.background.default.hex}};
-}
- #entry:selected {
+#entry:selected {
      background-color: {{colors.source_color.default.hex}};
 }
- #text:selected {
+#text {
+     color: {{colors.on_background.default.hex}};
+     background-color: {{colors.background.default.hex}};
+}
+#text:selected {
      font-weight: 500;
      color: {{colors.on_background.default.hex}};
      background-color: {{colors.source_color.default.hex}};
-}
- #text {
-     background-color: {{colors.background.default.hex}};
 }
