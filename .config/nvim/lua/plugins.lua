@@ -80,6 +80,7 @@ require("lazy").setup({
       opts = {
         formatters_by_ft = {
           lua = { "stylua" },
+          css = { "prettier" },
           -- javascript = { "prettierd", "prettier", stop_after_first = true },
         },
         format_on_save = {

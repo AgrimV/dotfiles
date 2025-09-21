@@ -25,7 +25,9 @@ if status is-interactive
     alias la='ls -a'
     alias ll='ls -la'
     alias lt='ls -T'
-    export EZA_CONFIG_DIR='~/.config/eza/'
+    set --erase LS_COLORS
+    set --erase EZA_COLORS
+    set EZA_CONFIG_DIR '~/.config/eza'
 
 	starship init fish | source
 end

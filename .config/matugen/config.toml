@@ -4,18 +4,45 @@ arguments = ["img", "--transition-type", "wipe", "--transition-angle", "30", "--
 set = true
 
 [templates.hyprland]
-input_path = './templates/hyprland_colors.conf'
+input_path = 'templates/hyprland_colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
 [templates.wofi]
-input_path = './templates/wofi_style.css'
-output_path = '~/.config/wofi/style.css'
+input_path = 'templates/all_colors.css'
+output_path = '~/.config/wofi/colors.css'
+
+[templates.alacritty]
+input_path = 'templates/alacritty_colors.toml'
+output_path = '~/.config/alacritty/colors.toml'
 
 [templates.starship]
-input_path = './templates/starship_template.toml'
+input_path = 'templates/starship_template.toml'
 output_path = '~/.config/starship.toml'
 
-# [templates.eza]
-# input_path = './templates/eza_theme.yml'
-# output_path = '~/.config/eza/theme.yml'
+[templates.eza]
+input_path = 'templates/eza_theme.yml'
+output_path = '~/.config/eza/theme.yml'
+
+[templates.pywalfox]
+input_path = 'templates/pywalfox_colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.vesktop]
+input_path = 'templates/vesktop_theme.css'
+output_path = '~/.config/vesktop/themes/midnight-discord.css'
+
+[templates.btop]
+input_path = 'templates/btop_colors.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'if pidof btop > /dev/null; then pkill -SIGUSR2 btop; fi'
+
+[templates.dunst]
+input_path = 'templates/dunst_rc'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = 'dunstctl reload'
+
+[templates.qt6ct]
+input_path = 'templates/qt6ct_colors.conf'
+output_path = '~/.config/qt6ct/colors/matugen.conf'
