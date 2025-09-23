@@ -50,4 +50,4 @@ post_hook = 'dunstctl reload'
 [templates.qt6ct]
 input_path = 'templates/qt6ct_colors.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
-post_hook = 'mv ~/.config/qt6ct/qt6ct.conf ~/.config/qt6ct/qt6ct_tmp.conf && cat ~/.config//qt6ct/qt6ct_tmp.conf > ~/.config/qt6ct/qt6ct.conf && rm ~/.config/qt6ct/qt6ct_tmp.conf'
+post_hook = 'touch ~/.config/qt6ct/qt6ct.conf'

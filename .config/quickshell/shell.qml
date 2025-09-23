@@ -56,7 +56,7 @@ ShellRoot {
                         height: 20
                         radius: 3
 
-                        color: is_active ? Theme.source_color : workspaceTextArea.containsMouse ? Theme.primary_container : Theme.background
+                        color: is_active ? Theme.primary : workspaceTextArea.pressed ? Theme.source_color : workspaceTextArea.containsMouse ? Theme.primary_container : Theme.background
 
                         MouseArea {
                             id: workspaceTextArea
@@ -73,7 +73,7 @@ ShellRoot {
                             id: workspaceText
                             anchors.centerIn: parent
                             text: index + 1
-                            color: is_active ? Theme.background : Theme.source_color
+                            color: is_active ? Theme.background : workspaceTextArea.pressed ? Theme.on_primary :Theme.on_background
                         }
                     }
                 }
@@ -111,18 +111,18 @@ ShellRoot {
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "d")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
+                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
                 }
 
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "M")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
+                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "yy")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
+                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
                 }
 
                 Item {
@@ -132,12 +132,12 @@ ShellRoot {
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "h")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
+                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "m")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
+                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
                 }
             }
         }
@@ -219,7 +219,7 @@ ShellRoot {
                 Rectangle {
                     property bool isCaffed: false
 
-                    color: caffeineArea.pressed ? Theme.primary : caffeineArea.containsMouse ? Theme.primary_container : Theme.background
+                    color: caffeineArea.pressed ? Theme.source_color : caffeineArea.containsMouse ? Theme.primary_container : Theme.background
                     implicitHeight: 25
                     implicitWidth: 25
 
@@ -256,7 +256,7 @@ ShellRoot {
 
                     Text {
                         text: parent.isCaffed ? "󰅶" : "󰾪"
-                        color: parent.isCaffed ? Theme.source_color : Theme.on_background
+                        color: parent.isCaffed ? Theme.primary : Theme.on_background
 
                         font.pointSize: 10
 
@@ -265,7 +265,7 @@ ShellRoot {
                 }
 
                 Rectangle {
-                    color: systemPowerArea.pressed ? Theme.primary : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
+                    color: systemPowerArea.pressed ? Theme.source_color : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
                     implicitHeight: 25
                     implicitWidth: 25
 
