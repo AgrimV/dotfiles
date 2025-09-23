@@ -82,7 +82,7 @@ ShellRoot {
 
         Rectangle {
 
-            color: clockArea.pressed ? Theme.primary : clockArea.containsMouse ? Theme.primary_container : Theme.background
+            color: clockArea.pressed ? Theme.source_color : clockArea.containsMouse ? Theme.primary_container : Theme.background
 
             anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
@@ -111,18 +111,18 @@ ShellRoot {
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "d")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                 }
 
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "M")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "yy")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                 }
 
                 Item {
@@ -132,12 +132,12 @@ ShellRoot {
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "h")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "m")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.primary
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                 }
             }
         }
@@ -150,8 +150,8 @@ ShellRoot {
                 horizontalCenter: parent.horizontalCenter
             }
 
-            height: childrenRect.height
-            width: childrenRect.width
+            height: childrenRect.height + 4
+            width: childrenRect.width + 4
 
             radius: 3
 
@@ -168,11 +168,13 @@ ShellRoot {
                         id: sysTrayItem
                         required property SystemTrayItem modelData
 
-                        width: 25
-                        height: 25
+                        anchors.horizontalCenter: parent.horizontalCenter
+
+                        width: 20
+                        height: 20
                         radius: 3
 
-                        color: sysTrayItemArea.pressed ? Theme.primary : sysTrayItemArea.containsMouse ? Theme.primary_container : Theme.background
+                        color: sysTrayItemArea.pressed ? Theme.source_color : sysTrayItemArea.containsMouse ? Theme.primary_container : Theme.background
 
                         IconImage {
                             id: icon
@@ -217,11 +219,14 @@ ShellRoot {
                 }
 
                 Rectangle {
-                    property bool isCaffed: false
+                    property bool is_caffed: false
 
-                    color: caffeineArea.pressed ? Theme.source_color : caffeineArea.containsMouse ? Theme.primary_container : Theme.background
-                    implicitHeight: 25
-                    implicitWidth: 25
+                    color: is_caffed ? Theme.primary : caffeineArea.pressed ? Theme.source_color : caffeineArea.containsMouse ? Theme.primary_container : Theme.background
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    implicitHeight: 20
+                    implicitWidth: 20
 
                     radius: 3
 
@@ -233,11 +238,11 @@ ShellRoot {
                         acceptedButtons: Qt.LeftButton
 
                         onClicked: event => {
-                            parent.isCaffed = !parent.isCaffed;
+                            parent.is_caffed = !parent.is_caffed;
 
                             caf.running = true;
 
-                            if (!parent.isCaffed)
+                            if (!parent.is_caffed)
                                 decaf.running = true;
                         }
                     }
@@ -255,8 +260,8 @@ ShellRoot {
                     }
 
                     Text {
-                        text: parent.isCaffed ? "󰅶" : "󰾪"
-                        color: parent.isCaffed ? Theme.primary : Theme.on_background
+                        text: parent.is_caffed ? "󰅶" : "󰾪"
+                        color: parent.is_caffed ? Theme.background : Theme.on_background
 
                         font.pointSize: 10
 
@@ -266,8 +271,11 @@ ShellRoot {
 
                 Rectangle {
                     color: systemPowerArea.pressed ? Theme.source_color : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
-                    implicitHeight: 25
-                    implicitWidth: 25
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    implicitHeight: 20
+                    implicitWidth: 20
 
                     radius: 3
 
