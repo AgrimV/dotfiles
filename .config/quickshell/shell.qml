@@ -27,16 +27,24 @@ ShellRoot {
 
         implicitWidth: 30
 
-        ColumnLayout {
+        Rectangle {
+            color: Theme.background
+
             anchors {
                 top: parent.top
                 horizontalCenter: parent.horizontalCenter
             }
 
-            Layout.fillWidth: true
+            height: childrenRect.height + 4
+            width: childrenRect.width + 4
+
+            radius: 3
 
             Column {
                 spacing: 5
+
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Repeater {
                     model: hyprland.maxWorkspace
@@ -44,11 +52,11 @@ ShellRoot {
                     Rectangle {
                         required property int index
                         property bool is_active: Hyprland.focusedMonitor?.activeWorkspace?.id === (index + 1)
-                        width: 25
-                        height: 25
+                        width: 20
+                        height: 20
                         radius: 3
 
-                        color: is_active ? "#4fa3fd" : workspaceTextArea.containsMouse ? "#191919" : "transparent"
+                        color: is_active ? Theme.source_color : workspaceTextArea.containsMouse ? Theme.primary_container : Theme.background
 
                         MouseArea {
                             id: workspaceTextArea
@@ -65,7 +73,7 @@ ShellRoot {
                             id: workspaceText
                             anchors.centerIn: parent
                             text: index + 1
-                            color: is_active ? "#000000" : "#4fa3fd"
+                            color: is_active ? Theme.background : Theme.source_color
                         }
                     }
                 }
@@ -74,11 +82,14 @@ ShellRoot {
 
         Rectangle {
 
-            color: clockArea.pressed ? "#4fa3fd" : clockArea.containsMouse ? "#191919" : "transparent"
-            anchors.centerIn: parent
+            color: clockArea.pressed ? Theme.primary : clockArea.containsMouse ? Theme.primary_container : Theme.background
 
-            implicitHeight: 150
-            width: 25
+            anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            height: childrenRect.height + 4
+            width: 24
+
             radius: 3
 
             MouseArea {
@@ -89,6 +100,7 @@ ShellRoot {
 
             ColumnLayout {
                 anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 spacing: 5
 
@@ -99,46 +111,53 @@ ShellRoot {
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "d")
-                    color: clockArea.pressed ? "#000000" : "#4fa3fd"
+                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
                 }
 
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "M")
-                    color: clockArea.pressed ? "#000000" : "#4fa3fd"
+                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "yy")
-                    color: clockArea.pressed ? "#000000" : "#4fa3fd"
+                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
                 }
 
                 Item {
-                    implicitHeight: 20
+                    height: 10
                 }
 
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "h")
-                    color: clockArea.pressed ? "#000000" : "#4fa3fd"
+                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "m")
-                    color: clockArea.pressed ? "#000000" : "#4fa3fd"
+                    color: clockArea.pressed ? Theme.on_primary : Theme.source_color
                 }
             }
         }
 
-        ColumnLayout {
+        Rectangle {
+            color: Theme.background
+
             anchors {
                 bottom: parent.bottom
                 horizontalCenter: parent.horizontalCenter
             }
 
-            Layout.fillWidth: true
+            height: childrenRect.height
+            width: childrenRect.width
+
+            radius: 3
 
             Column {
+                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 spacing: 5
 
@@ -153,7 +172,7 @@ ShellRoot {
                         height: 25
                         radius: 3
 
-                        color: sysTrayItemArea.pressed ? "#4fa3fd" : sysTrayItemArea.containsMouse ? "#191919" : "transparent"
+                        color: sysTrayItemArea.pressed ? Theme.primary : sysTrayItemArea.containsMouse ? Theme.primary_container : Theme.background
 
                         IconImage {
                             id: icon
@@ -185,64 +204,93 @@ ShellRoot {
 
                             onClicked: event => {
                                 menuAnchor.open();
-                            // if (event.button == Qt.LeftButton) {
-                            //     sysTrayItem.modelData.activate();
-                            // } else if (event.button == Qt.MiddleButton) {
-                            //     sysTrayItem.modelData.secondaryActivate();
-                            // } else if (event.button == Qt.RightButton) {
-                            //     menuAnchor.open();
-                            // }
+                                // if (event.button == Qt.LeftButton) {
+                                //     sysTrayItem.modelData.activate();
+                                // } else if (event.button == Qt.MiddleButton) {
+                                //     sysTrayItem.modelData.secondaryActivate();
+                                // } else if (event.button == Qt.RightButton) {
+                                //     menuAnchor.open();
+                                // }
                             }
                         }
                     }
                 }
-            }
 
-            Rectangle {
-                property bool isCaffed: false
+                Rectangle {
+                    property bool isCaffed: false
 
-                color: caffeineArea.pressed ? isCaffed ? "white" : "#4fa3fd" : caffeineArea.containsMouse ? "#191919" : "transparent"
-                implicitHeight: 25
-                implicitWidth: 25
+                    color: caffeineArea.pressed ? Theme.primary : caffeineArea.containsMouse ? Theme.primary_container : Theme.background
+                    implicitHeight: 25
+                    implicitWidth: 25
 
-                radius: 3
+                    radius: 3
 
-                MouseArea {
-                    id: caffeineArea
-                    anchors.fill: parent
-                    hoverEnabled: true
+                    MouseArea {
+                        id: caffeineArea
+                        anchors.fill: parent
+                        hoverEnabled: true
 
-                    acceptedButtons: Qt.LeftButton
+                        acceptedButtons: Qt.LeftButton
 
-                    onClicked: event => {
-                        parent.isCaffed = !parent.isCaffed;
+                        onClicked: event => {
+                            parent.isCaffed = !parent.isCaffed;
 
-                        caf.running = true;
+                            caf.running = true;
 
-                        if (!parent.isCaffed)
-                            decaf.running = true;
+                            if (!parent.isCaffed)
+                                decaf.running = true;
+                        }
+                    }
+
+                    Process {
+                        id: caf
+                        running: false
+                        command: ["killall", "hypridle"]
+                    }
+
+                    Process {
+                        id: decaf
+                        running: false
+                        command: ["hyprctl", "dispatch", "exec", "hypridle"]
+                    }
+
+                    Text {
+                        text: parent.isCaffed ? "󰅶" : "󰾪"
+                        color: parent.isCaffed ? Theme.source_color : Theme.on_background
+
+                        font.pointSize: 10
+
+                        anchors.centerIn: parent
                     }
                 }
 
-                Process {
-                    id: caf
-                    running: false
-                    command: ["killall", "hypridle"]
-                }
+                Rectangle {
+                    color: systemPowerArea.pressed ? Theme.primary : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
+                    implicitHeight: 25
+                    implicitWidth: 25
 
-                Process {
-                    id: decaf
-                    running: false
-                    command: ["hyprctl", "dispatch", "exec", "hypridle"]
-                }
+                    radius: 3
 
-                Text {
-                    text: parent.isCaffed ? "󰅶" : "󰾪"
-                    color: parent.isCaffed ? "#4fa3fd" : "white"
+                    MouseArea {
+                        id: systemPowerArea
+                        anchors.fill: parent
+                        hoverEnabled: true
 
-                    font.pointSize: 13
+                        acceptedButtons: Qt.LeftButton
 
-                    anchors.centerIn: parent
+                        onClicked: event => {}
+                    }
+
+                    // QsMenu {}
+
+                    Text {
+                        text: ""
+                        color: Theme.on_background
+
+                        font.pointSize: 10
+
+                        anchors.centerIn: parent
+                    }
                 }
             }
         }
