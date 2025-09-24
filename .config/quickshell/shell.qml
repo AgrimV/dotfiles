@@ -13,6 +13,7 @@ ShellRoot {
         color: "transparent"
 
         visible: true
+        aboveWindows: false
 
         anchors {
             top: true
