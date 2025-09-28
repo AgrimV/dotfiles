@@ -271,7 +271,7 @@ ShellRoot {
                 }
 
                 Rectangle {
-                    color: systemPowerArea.pressed ? Theme.source_color : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
+                    color: systemSessionArea.pressed ? Theme.source_color : systemSessionArea.containsMouse ? Theme.primary_container : Theme.background
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -281,16 +281,22 @@ ShellRoot {
                     radius: 3
 
                     MouseArea {
-                        id: systemPowerArea
+                        id: systemSessionArea
                         anchors.fill: parent
                         hoverEnabled: true
 
                         acceptedButtons: Qt.LeftButton
 
-                        onClicked: event => {}
+                        onClicked: event => {
+                            wlogoutProcess.running = true;
+                        }
                     }
 
-                    // QsMenu {}
+                    Process {
+                        id: wlogoutProcess
+                        running: false
+                        command: ["wlogout"]
+                    }
 
                     Text {
                         text: ""
