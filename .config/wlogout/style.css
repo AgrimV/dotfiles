@@ -1,0 +1,65 @@
+@import url("colors.css");
+
+window {
+  background-color: rgba(19, 19, 19, 0.7);
+}
+
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  background-color: @background;
+  border-width: 1px;
+  border-radius: 3px;
+  border-color: @source_color;
+  transition: all 0.3s cubic-bezier(0.4, 0.5, 0, 1.5);
+  margin: 150px 0px 150px 0px;
+}
+
+button:hover {
+  background-color: @primary;
+  background-size: 50%;
+  margin: 130px 30px 130px 30px;
+}
+
+button:focus,
+button:active {
+  background-color: @source_color;
+  background-size: 50%;
+  margin: 120px 30px 120px 30px;
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+  background-image: image(url("./icons/lock-hover.png"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout.png"));
+}
+#logout:hover {
+  background-image: image(url("./icons/logout-hover.png"));
+}
+
+#suspend {
+  background-image: image(url("./icons/suspend.png"));
+}
+#suspend:hover {
+  background-image: image(url("./icons/suspend-hover.png"));
+}
+
+#reboot {
+  background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover {
+  background-image: image(url("./icons/restart-hover.png"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover {
+  background-image: image(url("./icons/power-hover.png"));
+}

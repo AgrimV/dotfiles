@@ -295,7 +295,7 @@ ShellRoot {
                     Process {
                         id: wlogoutProcess
                         running: false
-                        command: ["wlogout"]
+                        command: ["wlogout", "-b", "5", "-c", "25"]
                     }
 
                     Text {
