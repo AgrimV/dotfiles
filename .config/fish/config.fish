@@ -16,6 +16,7 @@ if status is-interactive
     alias nvim="nvim -p"
     export EDITOR=nvim
     export SUDO_EDITOR=nvim
+    set -gx MANPAGER "nvim +Man!"
 
     # tmux colors
     set -x TERM xterm-256color
