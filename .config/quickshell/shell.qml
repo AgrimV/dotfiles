@@ -264,7 +264,7 @@ ShellRoot {
                         text: parent.is_caffed ? "󰅶" : "󰾪"
                         color: parent.is_caffed ? Theme.background : Theme.on_background
 
-                        font.pointSize: 10
+                        font.pointSize: 11
 
                         anchors.centerIn: parent
                     }
@@ -302,7 +302,7 @@ ShellRoot {
                         text: ""
                         color: Theme.on_background
 
-                        font.pointSize: 10
+                        font.pointSize: 11
 
                         anchors.centerIn: parent
                     }
