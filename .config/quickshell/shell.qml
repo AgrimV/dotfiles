@@ -192,7 +192,7 @@ ShellRoot {
 
                             anchor.onAnchoring: {
                                 const window = sysTrayItem.QsWindow.window;
-                                const widgetRect = window.contentItem.mapFromItem(sysTrayItem, 0, sysTrayItem.height, sysTrayItem.width, sysTrayItem.height);
+                                const widgetRect = window.contentItem.mapFromItem(sysTrayItem, 25, 0);
 
                                 menuAnchor.anchor.rect = widgetRect;
                             }
