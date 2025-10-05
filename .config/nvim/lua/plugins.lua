@@ -18,19 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- Colorschemes
-    {
-      "AgrimV/cyanide.nvim",
-      config = function()
-        vim.cmd("colorscheme cyanide")
-
-        local stat = vim.loop.fs_stat(vim.fn.stdpath("config") .. "/lua/matugen.lua")
-        if stat and stat.type == "file" then
-          require("matugen")
-        end
-      end,
-    },
-
     -- General
     {
       "nvim-lualine/lualine.nvim",
@@ -170,6 +157,22 @@ require("lazy").setup({
       event = "InsertEnter",
       config = true,
       opts = {},
+    },
+
+    -- Colorschemes
+    {
+      "AgrimV/cyanide.nvim",
+      config = function()
+        -- vim.cmd("colorscheme cyanide")
+
+        local stat = vim.loop.fs_stat(vim.fn.stdpath("config") .. "/lua/matugen.lua")
+        if stat and stat.type == "file" then
+          local MatugenPalette = require("matugen")
+          require("cyanide").setup({
+            Background = MatugenPalette.background,
+          })
+        end
+      end,
     },
   },
   checker = { enabled = true },
