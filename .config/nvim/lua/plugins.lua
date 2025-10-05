@@ -23,6 +23,11 @@ require("lazy").setup({
       "AgrimV/cyanide.nvim",
       config = function()
         vim.cmd("colorscheme cyanide")
+
+        local stat = vim.loop.fs_stat(vim.fn.expand("%:p:h") .. "/matugen.lua")
+        if stat and stat.type == "file" then
+          require("matugen")
+        end
       end,
     },
 

@@ -55,3 +55,7 @@ post_hook = 'dunstctl reload'
 input_path = 'templates/qt6ct_colors.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
 post_hook = 'touch ~/.config/qt6ct/qt6ct.conf'
+
+[templates.nvim]
+input_path = 'templates/nvim_colors.lua'
+output_path = '~/.config/nvim/lua/matugen.lua'
