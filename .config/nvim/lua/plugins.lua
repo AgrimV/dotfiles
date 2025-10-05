@@ -24,7 +24,7 @@ require("lazy").setup({
       config = function()
         vim.cmd("colorscheme cyanide")
 
-        local stat = vim.loop.fs_stat(vim.fn.expand("%:p:h") .. "/matugen.lua")
+        local stat = vim.loop.fs_stat(vim.fn.stdpath("config") .. "/lua/matugen.lua")
         if stat and stat.type == "file" then
           require("matugen")
         end
