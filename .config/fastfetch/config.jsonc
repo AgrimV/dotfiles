@@ -8,7 +8,7 @@
 	"display": {
         "separator": "     ",
         "color": {
-            "separator": "1" // Bold
+            "separator": "1"
         },
         "constants": [
             "─────────────────────────"
@@ -55,46 +55,8 @@
         "break",
         {
             "type": "colors",
-            "paddingLeft": 30,
+            "paddingLeft": 24,
             "symbol": "circle"
         }
     ]
-	// "display": {
-	// 	"separator": "  "
-	// },
-	//     "modules": [
-	// 	    {
-	//       "type": "title",
-	//       "format": "{#1}╭────────────────── {#}{user-name-colored} ──────────────────╮"
-	//     },
-	//     {
-	//       "type": "os",
-	//       "key": "{#separator}{#keys}   󰍹 OS"
-	//     },
-	//         "separator",
-	//         "os",
-	//         "kernel",
-	//         "shell",
-	//         "de",
-	//         "terminal",
-	//         {
-	//             "type": "cpu",
-	//             "showPeCoreCount": true,
-	//             "temp": true
-	//         },
-	//         {
-	//             "type": "gpu",
-	//             "driverSpecific": true,
-	//             "temp": true
-	//         },
-	//         "memory",
-	//         "physicalmemory",
-	//         {
-	//             "type": "swap",
-	//             "separate": true
-	//         },
-	//         "disk",
-	//         "separator",
-	//         "colors"
-	//     ]
 }
