@@ -75,6 +75,7 @@ ShellRoot {
                             anchors.centerIn: parent
                             text: index + 1
                             color: is_active ? Theme.background : workspaceTextArea.pressed ? Theme.on_primary :Theme.on_background
+                            font.pointSize: 11
                         }
                     }
                 }
@@ -113,17 +114,20 @@ ShellRoot {
                 Text {
                     text: Qt.formatDateTime(clock.date, "d")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
                 }
 
                 Text {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "M")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "yy")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
                 }
 
                 Item {
@@ -134,11 +138,13 @@ ShellRoot {
                     Layout.alignment: Qt.AlignRight
                     text: Qt.formatDateTime(clock.date, "h")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
                 }
 
                 Text {
                     text: Qt.formatDateTime(clock.date, "m")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
                 }
             }
         }
