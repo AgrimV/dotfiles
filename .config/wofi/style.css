@@ -5,28 +5,22 @@
   border: 2px solid @source_color;
   background-color: @background;
 }
+#outer-box {
+  margin: 5px;
+  background-color: @background;
+}
 #input {
   margin: 5px;
   border: 1px solid @source_color;
   color: @on_background;
   background-color: @background;
 }
-#inner-box {
-  margin: 5px;
-  background-color: @background;
-}
-#outer-box {
-  margin: 5px;
-  background-color: @background;
-}
 #scroll {
   background-color: @background;
 }
-#entry {
+#inner-box {
+  margin: 5px;
   background-color: @background;
-}
-#entry:selected {
-  background-color: @primary;
 }
 #text {
   color: @on_background;
@@ -35,5 +29,11 @@
 #text:selected {
   font-weight: 500;
   color: @on_primary;
+  background-color: @primary;
+}
+#entry {
+  background-color: @background;
+}
+#entry:selected {
   background-color: @primary;
 }
