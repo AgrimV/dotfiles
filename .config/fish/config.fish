@@ -9,8 +9,10 @@ if status is-interactive
 	alias dot='/usr/bin/git --git-dir=$HOME/Downloads/dotfiles.git/ --work-tree=$HOME'
     dot config --local status.showUntrackedFiles no
 
-    #alacritty
-    source "$HOME/.cargo/env.fish"
+    # add to $PATH
+    set -gx PATH $HOME/.cargo/bin $PATH
+    set -gx PATH $HOME/.spicetify $PATH
+    set -gx PATH $HOME/flutter-sdk/flutter/bin $PATH
 
     # neovim
     alias nvim="nvim -p"
