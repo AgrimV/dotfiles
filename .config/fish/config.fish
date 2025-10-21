@@ -13,6 +13,7 @@ if status is-interactive
     set -gx PATH $HOME/.cargo/bin $PATH
     set -gx PATH $HOME/.spicetify $PATH
     set -gx PATH $HOME/flutter-sdk/flutter/bin $PATH
+    set -gx PATH $HOME/.local/bin $PATH
 
     # neovim
     alias nvim="nvim -p"

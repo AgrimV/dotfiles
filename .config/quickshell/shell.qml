@@ -6,6 +6,8 @@ import Quickshell.Io
 import Quickshell.Widgets
 import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
+import Quickshell.Services.UPower 
+import Quickshell.Services.Pipewire
 
 ShellRoot {
 
@@ -37,7 +39,7 @@ ShellRoot {
             }
 
             height: childrenRect.height + 4
-            width: childrenRect.width + 4
+            width: 24
 
             radius: 3
 
@@ -158,7 +160,7 @@ ShellRoot {
             }
 
             height: childrenRect.height + 4
-            width: childrenRect.width + 4
+            width: 24
 
             radius: 3
 
@@ -232,8 +234,8 @@ ShellRoot {
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    implicitHeight: 20
-                    implicitWidth: 20
+                    height: 20
+                    width: 20
 
                     radius: 3
 
@@ -281,8 +283,8 @@ ShellRoot {
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    implicitHeight: 20
-                    implicitWidth: 20
+                    height: 20
+                    width: 20
 
                     radius: 3
 
@@ -311,6 +313,167 @@ ShellRoot {
                         font.pointSize: 11
 
                         anchors.centerIn: parent
+                    }
+                }
+            }
+        }
+    }
+
+    Scope {
+        id: root
+
+        readonly property list<var> warnLevels: [...Config.general.battery.warnLevels].sort((a, b) => b.level - a.level)
+
+        Connections {
+            target: UPower
+
+            function onOnBatteryChanged(): void {
+                if (UPower.onBattery) {
+                    if (Config.utilities.toasts.chargingChanged)
+                        Toaster.toast(qsTr("Charger unplugged"), qsTr("Battery is now on AC"), "power_off");
+                } else {
+                    if (Config.utilities.toasts.chargingChanged)
+                        Toaster.toast(qsTr("Charger plugged in"), qsTr("Battery is charging"), "power");
+                    for (const level of root.warnLevels)
+                        level.warned = false;
+                }
+            }
+        }
+
+        Connections {
+            target: UPower.displayDevice
+
+            function onPercentageChanged(): void {
+                if (!UPower.onBattery)
+                    return;
+
+                const p = UPower.displayDevice.percentage * 100;
+                for (const level of root.warnLevels) {
+                    if (p <= level.level && !level.warned) {
+                        level.warned = true;
+                        Toaster.toast(level.title ?? qsTr("Battery warning"), level.message ?? qsTr("Battery level is low"), level.icon ?? "battery_android_alert", level.critical ? Toast.Error : Toast.Warning);
+                    }
+                }
+
+                if (!hibernateTimer.running && p <= Config.general.battery.criticalLevel) {
+                    Toaster.toast(qsTr("Hibernating in 5 seconds"), qsTr("Hibernating to prevent data loss"), "battery_android_alert", Toast.Error);
+                    hibernateTimer.start();
+                }
+            }
+        }
+
+        Timer {
+            id: hibernateTimer
+
+            interval: 5000
+            onTriggered: Quickshell.execDetached(["systemctl", "hibernate"])
+        }
+    }
+
+    Scope {
+        id: volumeOsd
+
+        PwObjectTracker {
+            objects: [ Pipewire.defaultAudioSink ]
+        }
+
+        Connections {
+            target: Pipewire.defaultAudioSink?.audio
+
+            function onVolumeChanged() {
+                if (volumeOsd.first_load) {
+                    volumeOsd.first_load = false;
+                    return;
+                }
+
+                volumeOsd.show = true;
+                hideTimer.restart();
+
+                volumeOsd.is_muted = (Pipewire.defaultAudioSink?.audio.muted || Pipewire.defaultAudioSink?.audio.volume == 0) ? true : false;
+            }
+
+            function onMutedChanged() {
+                volumeOsd.show = true;
+                hideTimer.restart();
+
+                volumeOsd.is_muted = Pipewire.defaultAudioSink?.audio.muted;
+            }
+        }
+
+        property bool show: false
+        property bool is_muted: false
+        property bool first_load: true
+
+        Timer {
+            id: hideTimer
+            running: false
+            interval: 1500
+            onTriggered: volumeOsd.show = false
+        }
+
+        LazyLoader {
+            active: volumeOsd.show
+
+            PanelWindow {
+                anchors.bottom: true
+                margins.bottom: screen.height / 10
+                exclusiveZone: 0
+
+                implicitWidth: 300
+                implicitHeight: 25
+                color: "transparent"
+
+                // An empty click mask prevents the window from blocking mouse events.
+                mask: Region {}
+
+                Rectangle {
+                    anchors.fill: parent
+                    radius: 3
+                    color: Theme.background
+
+                    Text {
+                        id: volumeText
+
+                        text: volumeOsd.is_muted ? "" : Pipewire.defaultAudioSink?.audio.volume > 0.6 ? "" : ""
+                        font.pointSize: 11
+
+                        color: Theme.source_color
+
+                        Layout.alignment: Qt.AlignLeft
+
+                        anchors.left: parent.left
+                        anchors.leftMargin: 10
+                    }
+
+
+                    Rectangle {
+                        Layout.alignment: Qt.AlignRight
+
+                        anchors.right: parent.right
+                        anchors.left: volumeText.right
+                        anchors.leftMargin: 10
+
+                        implicitHeight: 20
+                        radius: 3
+                        color: Theme.primary_container
+
+                        Rectangle {
+                            color: volumeOsd.is_muted ? Theme.primary_container : Theme.primary
+
+                            anchors {
+                                left: parent.left
+                                top: parent.top
+                                bottom: parent.bottom
+
+                                leftMargin: 3
+                                topMargin: 3
+                                bottomMargin: 3
+                                rightMargin: 3
+                            }
+
+                            implicitWidth: parent.width * (Pipewire.defaultAudioSink?.audio.volume ?? 0) - 7
+                            radius: parent.radius
+                        }
                     }
                 }
             }

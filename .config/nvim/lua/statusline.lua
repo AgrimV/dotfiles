@@ -13,7 +13,7 @@ require("lualine").setup({
       end,
     } },
     lualine_b = { "diagnostics" },
-    lualine_c = { "location" },
+    lualine_c = { "location", "progress" },
     lualine_x = { "%S" },
     lualine_y = { "diff" },
     lualine_z = { { "branch", icon = "" } },

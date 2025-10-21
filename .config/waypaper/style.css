@@ -1,0 +1,27 @@
+@import url(".config/waypaper/colors.css");
+
+window {
+  background-color: @background;
+}
+
+button:hover {
+  background-image: none;
+  box-shadow: none;
+  border-color: @source_color;
+}
+
+button:hover > image {
+  -gtk-icon-shadow: none;
+  -gtk-icon-effect: none;
+}
+
+.highlighted-button {
+  background-image: none;
+  box-shadow: none;
+  background-color: @primary;
+}
+
+.highlighted-button > image,
+.highlighted-button:hover > image {
+  -gtk-icon-effect: highlight;
+}
