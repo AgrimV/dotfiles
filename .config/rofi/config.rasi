@@ -1,0 +1,22 @@
+configuration {
+    modes: "window,drun,run,ssh,combi";
+    font: "AnonymicePro Nerd Font Mono 12";
+    fixed-num-lines: false;
+    sort: true;
+    case-smart: true;
+    cycle: false;
+    hover-select: true;
+    eh: 1;
+    combi-modes: "window,run,drun";
+    matching: "prefix";
+    window-format: "{c}: {t}";
+    combi-display-format: "{text}";
+    imdkit: false;
+    display-combi: "";
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
+}
+
+@theme "matugen"

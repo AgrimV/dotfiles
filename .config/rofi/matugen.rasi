@@ -1,0 +1,63 @@
+@import "colors"
+
+* {
+	spacing: 0;
+	background-color: @background;
+}
+
+window {
+	background-color: @background;
+    height: 300px;
+    width: 400px;
+}
+
+mainbox {
+	border: 2px;
+	border-color: @source-color;
+	children: [inputbar, listview];
+}
+
+inputbar {
+	padding: 5px;
+	children: [entry];
+}
+
+entry {
+	text-color: @on-background;
+}
+
+listview {
+	scrollbar: false;
+}
+
+element {
+	padding: 5px;
+	children: [element-text];
+}
+
+element-text {
+	background-color: inherit;
+	text-color: inherit;
+	foreground-color: inherit;
+}
+
+element normal {
+    text-color: @on-background;
+	background-color: @background;
+}
+
+element urgent {
+    text-color: @on-background;
+	background-color: @background;
+}
+
+element active {
+    text-color: @on-background;
+	background-color: @background;
+}
+
+element selected {
+    highlight: bold underline;
+    text-color: @on-primary;
+	background-color: @primary;
+}

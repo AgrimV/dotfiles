@@ -1,0 +1,7 @@
+* {
+    background: {{colors.background.default.hex}};
+    on-background: {{colors.on_background.default.hex}};
+    primary: {{colors.primary.default.hex}};
+    on-primary: {{colors.on_primary.default.hex}};
+    source-color: {{colors.source_color.default.hex}};
+}
