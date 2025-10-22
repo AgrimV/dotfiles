@@ -1,13 +1,13 @@
 configuration {
     modes: "window,drun,run,ssh,combi";
-    font: "AnonymicePro Nerd Font Mono 12";
+    font: "AnonymicePro Nerd Font Mono Bold 12";
     fixed-num-lines: false;
     sort: true;
     case-smart: true;
     cycle: false;
     hover-select: true;
     eh: 1;
-    combi-modes: "window,run,drun";
+    combi-modes: "window,drun";
     matching: "prefix";
     window-format: "{c}: {t}";
     combi-display-format: "{text}";

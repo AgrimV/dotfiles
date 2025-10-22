@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=btop
+Type=Application
+GenericName=Resource Monitor
+Comment=Usage and stats for processor, memory, disks, network, and processes
+Exec=btop
+Terminal=true
+Categories=Utility;
+StartupNotify=false;

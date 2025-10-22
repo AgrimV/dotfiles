@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Waypaper
+Type=Application
+GenericName=Wallpaper Utility
+Comment=Switch Wallpaper
+Exec=waypaper
+Terminal=false
+Keywords=Wallpaper;
+Categories=Utility;
+StartupNotify=false;
