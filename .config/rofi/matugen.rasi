@@ -7,8 +7,10 @@
 
 window {
 	background-color: @background;
-    height: 300px;
-    width: 400px;
+    width: 30%;
+    location: north;
+    anchor: north;
+    y-offset: 25%;
 }
 
 mainbox {
