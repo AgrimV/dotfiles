@@ -90,7 +90,8 @@ require("lazy").setup({
       version = "*",
       config = function()
         require("mini.icons").setup()
-        require("mini.surround").setup({})
+        require("mini.surround").setup()
+        require("mini.files").setup()
         require("mini.pick").setup({
           mappings = {
             choose_in_tabpage = "<CR>",
@@ -108,7 +109,6 @@ require("lazy").setup({
             hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
           },
         })
-        require("mini.files").setup({})
 
         local map_split = function(buf_id, key, close_after)
           local open_file = function()
