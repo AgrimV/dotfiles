@@ -65,3 +65,7 @@ output_path = '~/.config/waypaper/colors.css'
 input_path = 'templates/spicetify_color.ini'
 output_path = '~/.config/spicetify/Themes/text/color.ini'
 post_hook = '~/.config/matugen/scripts/spicetify_reload.sh'
+
+[templates.vencord]
+input_path = 'templates/vencord_midnight.css'
+output_path = '~/.config/vesktop/themes/midnight.theme.css'
