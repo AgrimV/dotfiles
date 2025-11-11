@@ -24,8 +24,8 @@ ShellRoot {
         }
 
         margins {
-            top: 5
-            bottom: 5
+            top: 2
+            bottom: 2
         }
 
         implicitWidth: 30
