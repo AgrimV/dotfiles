@@ -12,7 +12,6 @@ family = "AnonymicePro Nerd Font Mono"
 
 [window]
 decorations = "None"
-opacity = 0.7
 dynamic_padding = true
 
 [cursor]
