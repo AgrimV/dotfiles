@@ -50,7 +50,6 @@ require("lazy").setup({
       config = function()
         require("mini.icons").setup()
         require("mini.surround").setup()
-        require("mini.bracketed").setup()
         -- require("mini.terminals").setup()
         require("mini.pick").setup({
           mappings = {
@@ -168,6 +167,7 @@ require("lazy").setup({
     },
     {
       "saghen/blink.cmp",
+      version = "1.x",
       dependencies = { "rafamadriz/friendly-snippets" },
       opts = {
         keymap = { preset = "super-tab" },
