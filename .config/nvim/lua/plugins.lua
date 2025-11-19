@@ -44,23 +44,69 @@ require("lazy").setup({
       "karb94/neoscroll.nvim",
       opts = {},
     },
-
-    -- Coding
     {
-      "nvim-treesitter/nvim-treesitter",
-      branch = "master",
-      lazy = false,
-      build = ":TSUpdate",
+      "echasnovski/mini.nvim",
+      version = "*",
       config = function()
-        require("treesitter")
+        require("mini.icons").setup()
+        require("mini.surround").setup()
+        require("mini.bracketed").setup()
+        -- require("mini.terminals").setup()
+        require("mini.pick").setup({
+          mappings = {
+            choose_in_tabpage = "<CR>",
+            choose = "<C-t>",
+          },
+        })
+        require("mini.indentscope").setup({
+          draw = {
+            delay = 1,
+            animation = require("mini.indentscope").gen_animation.none(),
+          },
+        })
+        require("mini.hipatterns").setup({
+          highlighters = {
+            todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+            hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+          },
+        })
+
+        require("mini.files").setup()
+        local map_split = function(buf_id, key, close_after)
+          local open_file = function()
+            local fs_entry = MiniFiles.get_fs_entry()
+            if fs_entry.fs_type == "directory" then
+              MiniFiles.go_in()
+              return
+            end
+
+            local cur_target = MiniFiles.get_explorer_state().target_window
+            local new_target = vim.api.nvim_win_call(cur_target, function()
+              vim.cmd("tab split")
+              return vim.api.nvim_get_current_win()
+            end)
+
+            MiniFiles.set_target_window(new_target)
+            MiniFiles.go_in({
+              close_on_file = close_after,
+            })
+          end
+
+          vim.keymap.set("n", key, open_file, { buffer = buf_id })
+        end
+
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "MiniFilesBufferCreate",
+          callback = function(args)
+            local buf_id = args.data.buf_id
+            map_split(buf_id, "l", true)
+            map_split(buf_id, "L", false)
+          end,
+        })
       end,
     },
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
+
+    -- Coding
     {
       "neovim/nvim-lspconfig",
     },
@@ -103,70 +149,26 @@ require("lazy").setup({
         },
       },
     },
+    { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim", opts = { numhl = true, signcolumn = false } },
     {
-      "echasnovski/mini.nvim",
-      version = "*",
+      "nvim-treesitter/nvim-treesitter",
+      branch = "master",
+      lazy = false,
+      build = ":TSUpdate",
       config = function()
-        require("mini.icons").setup()
-        require("mini.surround").setup()
-        require("mini.files").setup()
-        require("mini.pick").setup({
-          mappings = {
-            choose_in_tabpage = "<CR>",
-            choose = "<C-t>",
-          },
-        })
-        require("mini.indentscope").setup({
-          draw = {
-            delay = 1,
-            animation = require("mini.indentscope").gen_animation.none(),
-          },
-        })
-        require("mini.hipatterns").setup({
-          highlighters = {
-            hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
-          },
-        })
-
-        local map_split = function(buf_id, key, close_after)
-          local open_file = function()
-            local fs_entry = MiniFiles.get_fs_entry()
-            if fs_entry.fs_type == "directory" then
-              MiniFiles.go_in()
-              return
-            end
-
-            local cur_target = MiniFiles.get_explorer_state().target_window
-            local new_target = vim.api.nvim_win_call(cur_target, function()
-              vim.cmd("tab split")
-              return vim.api.nvim_get_current_win()
-            end)
-
-            MiniFiles.set_target_window(new_target)
-            MiniFiles.go_in({
-              close_on_file = close_after,
-            })
-          end
-
-          vim.keymap.set("n", key, open_file, { buffer = buf_id })
-        end
-
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "MiniFilesBufferCreate",
-          callback = function(args)
-            local buf_id = args.data.buf_id
-            map_split(buf_id, "l", true)
-            map_split(buf_id, "L", false)
-          end,
-        })
+        require("treesitter")
       end,
+    },
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+      },
     },
     {
       "saghen/blink.cmp",
       dependencies = { "rafamadriz/friendly-snippets" },
-
-      version = "1.*",
-
       opts = {
         keymap = { preset = "super-tab" },
         completion = { documentation = { auto_show = true } },

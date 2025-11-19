@@ -31,5 +31,3 @@ vim.diagnostic.config({
     },
   },
 })
-
-opt.showcmdloc = "statusline"
