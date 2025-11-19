@@ -63,13 +63,31 @@ require("lazy").setup({
     },
     {
       "neovim/nvim-lspconfig",
-      config = function()
-        require("lsp")
-      end,
     },
     {
       "mason-org/mason.nvim",
       opts = {},
+    },
+    {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {},
+    },
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      opts = {
+        ensure_installed = {
+          -- LSP
+          "hyprls",
+          "lua-language-server",
+          "python-lsp-server",
+          -- DAP
+          -- Linter
+          "stylelint",
+          -- Formatter
+          "prettier",
+          "stylua",
+        },
+      },
     },
     {
       "stevearc/conform.nvim",
