@@ -187,15 +187,7 @@ require("lazy").setup({
     {
       "AgrimV/cyanide.nvim",
       config = function()
-        -- vim.cmd("colorscheme cyanide")
-
-        local stat = vim.loop.fs_stat(vim.fn.stdpath("config") .. "/lua/matugen.lua")
-        if stat and stat.type == "file" then
-          local MatugenPalette = require("matugen")
-          require("cyanide").setup({
-            Background = MatugenPalette.background,
-          })
-        end
+        require("preload").setup()
       end,
     },
   },
