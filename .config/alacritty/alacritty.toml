@@ -5,10 +5,10 @@ import = ["colors.toml"]
 draw_bold_text_with_bright_colors = true
 
 [font]
-size = 12
+size = 11
 
 [font.normal]
-family = "AnonymicePro Nerd Font Mono"
+family = "FiraMono Nerd Font Mono"
 
 [window]
 decorations = "None"
