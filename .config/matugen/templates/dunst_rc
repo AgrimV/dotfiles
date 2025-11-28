@@ -15,7 +15,7 @@
 
     sort = true
 
-    font = AnonymicePro Nerd Font Mono 12
+    font = FiraMono Nerd Font Mono 12
 
     #   %a  appname
     #   %s  summary
