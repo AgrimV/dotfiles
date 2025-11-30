@@ -16,4 +16,32 @@ map("v", ">", ">gv")
 map("n", "<C-o>", ":lua MiniFiles.open()<Enter>")
 map("n", "<Leader>ff", ":Pick files<CR>")
 map("n", "<Leader>fc", ":Pick grep_live<CR>")
-map("n", "<Leader>r", ":so $MYVIMRC<CR>")
+
+-- Wezterm Integration
+local nav = {
+  h = "Left",
+  j = "Down",
+  k = "Up",
+  l = "Right",
+}
+
+local function navigate(key)
+  return function()
+    local win = vim.api.nvim_get_current_win()
+
+    vim.cmd.wincmd(key)
+
+    local pane = vim.env.WEZTERM_PANE
+
+    if pane and win == vim.api.nvim_get_current_win() then
+      local pane_dir = nav[key]
+
+      vim.system({ "wezterm", "cli", "activate-pane-direction", pane_dir })
+    end
+  end
+end
+
+for key, dir in pairs(nav) do
+  vim.keymap.set("n", "<C-" .. dir .. ">", navigate(key))
+  vim.keymap.set("n", "<C-" .. key .. ">", navigate(key))
+end

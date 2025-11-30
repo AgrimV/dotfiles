@@ -23,57 +23,21 @@ config.color_scheme = "matugen_theme"
 config.force_reverse_video_cursor = true
 
 -- Keybinds
+config.disable_default_key_bindings = true
 config.keys = {
+	-- Splits
 	{
-		key = "'",
+		key = "\\",
 		mods = "CTRL",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = '"',
-		mods = "CTRL|SHIFT",
+		key = "-",
+		mods = "CTRL",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
-	{
-		key = "h",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Left"),
-	},
-	{
-		key = "l",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Right"),
-	},
-	{
-		key = "k",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Up"),
-	},
-	{
-		key = "j",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Down"),
-	},
-	{
-		key = "LeftArrow",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Left"),
-	},
-	{
-		key = "RightArrow",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Right"),
-	},
-	{
-		key = "UpArrow",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Up"),
-	},
-	{
-		key = "DownArrow",
-		mods = "CTRL",
-		action = wezterm.action.ActivatePaneDirection("Down"),
-	},
+
+	-- Resize
 	{
 		key = "h",
 		mods = "CTRL|SHIFT",
@@ -114,6 +78,38 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
 	},
+	{ key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
 }
+
+-- NeoVim Integration
+local pane_nav = {
+	Left = { "h", "LeftArrow" },
+	Down = { "j", "DownArrow" },
+	Up = { "k", "UpArrow" },
+	Right = { "l", "RightArrow" },
+}
+
+local is_nvim = function(pane)
+	return pane:get_foreground_process_name():find("n?vim") ~= nil
+end
+
+---@param dir "Right" | "Left" | "Up" | "Down"
+local activate_pane = function(dir)
+	return wezterm.action_callback(function(window, pane)
+		if is_nvim(pane) then
+			window:perform_action(wezterm.action.SendKey({ key = pane_nav[dir][1], mods = "CTRL" }), pane)
+		else
+			window:perform_action(wezterm.action.ActivatePaneDirection(dir), pane)
+		end
+	end)
+end
+
+for dir, keys in pairs(pane_nav) do
+	for _, key in ipairs(keys) do
+		wezterm.log_info(key)
+		wezterm.log_info(dir)
+		table.insert(config.keys, { key = key, mods = "CTRL", action = activate_pane(dir) })
+	end
+end
 
 return config
