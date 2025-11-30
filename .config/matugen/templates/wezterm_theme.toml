@@ -10,23 +10,23 @@ selection_fg = "{{colors.on_secondary.default.hex}}"
 split = "{{colors.secondary_fixed_dim.default.hex}}"
 
 ansi = [
-    "#181818",
-    "{{colors.error.default.hex}}",
-    "{{colors.primary.default.hex}}",
-    "{{colors.inverse_primary.default.hex}}",
-    "{{colors.primary.default.hex}}",
-    "{{colors.tertiary.default.hex}}",
-    "{{colors.secondary.default.hex}}",
-    "#BAC2DE"
+    "#191919",
+    "#D90202",
+    "#7FB11B",
+    "#FFD739",
+    "#3570D7",
+    "#BE84FF",
+    "#66D9EF",
+    "#F8F8F8"
 ]
 
 brights = [
-    "#585B70",
-    "#F38BA8",
-    "#A6E3A1",
-    "#F9E2AF",
-    "#89B4FA",
-    "#F5C2E7",
-    "#94E2D5",
-    "#A6ADC8"
+    "#4D4D4D",
+    "#FF4747",
+    "#A0D04D",
+    "#FFEB4D",
+    "#6A9FF7",
+    "#D9A6FF",
+    "#80F5FF",
+    "#FFFFFF"
 ]
