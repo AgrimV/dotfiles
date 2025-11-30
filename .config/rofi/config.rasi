@@ -1,6 +1,6 @@
 configuration {
     modes: "window,drun,run,ssh,combi";
-    font: "FiraMono Nerd Font Mono 12";
+    font: "FiraMono Nerd Font Mono 11";
     fixed-num-lines: false;
     sort: true;
     case-smart: true;
