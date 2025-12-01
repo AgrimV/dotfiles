@@ -1,5 +1,9 @@
 [config]
 
+[templates.openrgb]
+input_path = 'templates/openrgb_dummy'
+post_hook = 'openrgb -c {{colors.source_color.default.hex_stripped}}'
+
 [templates.hyprland]
 input_path = 'templates/hyprland_colors.conf'
 output_path = '~/.config/hypr/colors.conf'
