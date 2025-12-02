@@ -11,7 +11,7 @@ $git_branch\
 [](fg:color1)\
 $line_break\
 [ ](bg:color1)\
-$shell\
+${custom.moon_phase}\
 [ ](fg:color1)\
 """
 
@@ -45,10 +45,10 @@ deleted_style = 'fg:red bg:color1'
 format = ' at [$hash $tag]($style)'
 style = 'color1'
 
-[shell]
-disabled = false
-fish_indicator = ''
-format = '[$indicator]($style)'
+[custom.moon_phase]
+command = '~/.config/matugen/scripts/moon_phase.sh'
+when = true
+shell = 'bash'
 style = 'fg:color2 bg:color1'
 
 [python]
