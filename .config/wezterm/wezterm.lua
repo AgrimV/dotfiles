@@ -25,6 +25,38 @@ config.force_reverse_video_cursor = true
 -- Keybinds
 config.disable_default_key_bindings = true
 config.keys = {
+	-- Defaults
+	{
+		key = "v",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.PasteFrom("Clipboard"),
+	},
+	{
+		key = "c",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.CopyTo("Clipboard"),
+	},
+	{
+		key = "-",
+		mods = "CTRL",
+		action = wezterm.action.DecreaseFontSize,
+	},
+	{
+		key = "=",
+		mods = "CTRL",
+		action = wezterm.action.IncreaseFontSize,
+	},
+	{
+		key = "0",
+		mods = "CTRL",
+		action = wezterm.action.ResetFontSize,
+	},
+	{
+		key = "f",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.Search({ CaseSensitiveString = "" }),
+	},
+
 	-- Splits
 	{
 		key = "\\",
