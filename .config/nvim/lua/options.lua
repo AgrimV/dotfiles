@@ -16,6 +16,7 @@ opt.swapfile = false
 opt.switchbuf = "usetab,newtab"
 opt.ignorecase = true
 opt.smartcase = true
+opt.undofile = true
 
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = " "
