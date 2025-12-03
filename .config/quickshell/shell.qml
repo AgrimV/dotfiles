@@ -114,6 +114,25 @@ ShellRoot {
                 }
 
                 Text {
+                    Layout.alignment: Qt.AlignLeft
+                    text: Qt.formatDateTime(clock.date, "h")
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
+                }
+
+                Text {
+                    Layout.alignment: Qt.AlignRight
+                    text: Qt.formatDateTime(clock.date, "m")
+                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                    font.pointSize: 11
+                }
+
+                Item {
+                    height: 5
+                }
+
+                Text {
+                    Layout.alignment: Qt.AlignLeft
                     text: Qt.formatDateTime(clock.date, "d")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                     font.pointSize: 11
@@ -127,24 +146,8 @@ ShellRoot {
                 }
 
                 Text {
+                    Layout.alignment: Qt.AlignLeft
                     text: Qt.formatDateTime(clock.date, "yy")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Item {
-                    height: 10
-                }
-
-                Text {
-                    Layout.alignment: Qt.AlignRight
-                    text: Qt.formatDateTime(clock.date, "h")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Text {
-                    text: Qt.formatDateTime(clock.date, "m")
                     color: clockArea.pressed ? Theme.on_primary : Theme.on_background
                     font.pointSize: 11
                 }
