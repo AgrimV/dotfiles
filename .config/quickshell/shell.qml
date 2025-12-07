@@ -268,7 +268,7 @@ ShellRoot {
                     Process {
                         id: decaf
                         running: false
-                        command: ["hyprctl", "dispatch", "exec", "hypridle"]
+                        command: ["uwsm", "app", "--", "hypridle"]
                     }
 
                     Text {
