@@ -56,6 +56,14 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.Search({ CaseSensitiveString = "" }),
 	},
+	{
+		key = "l",
+		mods = "ALT",
+		action = wezterm.action.Multiple({
+			wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+			wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
+		}),
+	},
 
 	-- Splits
 	{
