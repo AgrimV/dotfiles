@@ -11,7 +11,6 @@ $git_branch\
 [](fg:color1)\
 $line_break\
 [ ](bg:color1)\
-${custom.moon_phase}\
 [ ](fg:color1)\
 """
 
