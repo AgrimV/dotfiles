@@ -37,12 +37,12 @@ config.keys = {
 		action = wezterm.action.CopyTo("Clipboard"),
 	},
 	{
-		key = "-",
+		key = "[",
 		mods = "CTRL",
 		action = wezterm.action.DecreaseFontSize,
 	},
 	{
-		key = "=",
+		key = "]",
 		mods = "CTRL",
 		action = wezterm.action.IncreaseFontSize,
 	},

@@ -9,55 +9,23 @@ import Quickshell.Services.SystemTray
 import Quickshell.Services.UPower 
 import Quickshell.Services.Pipewire
 
-ShellRoot {
+Scope {
+    id: root
 
-    PanelWindow {
-        color: "transparent"
-
-        visible: true
-        aboveWindows: false
-
-        anchors {
-            top: true
-            left: true
-            bottom: true
-        }
-
-        margins {
-            top: 2
-            bottom: 2
-        }
-
-        implicitWidth: 30
-
-        Rectangle {
-            color: Theme.background
-
-            anchors {
-                top: parent.top
-                horizontalCenter: parent.horizontalCenter
-            }
-
-            height: childrenRect.height + 4
-            width: 24
-
-            radius: 3
-
-            Column {
-                spacing: 5
-
-                anchors.centerIn: parent
-                anchors.horizontalCenter: parent.horizontalCenter
-
+    Variants {
+        model: Quickshell.screens
+        delegate: Bar {
+            topItems: [
                 Repeater {
                     model: hyprland.maxWorkspace
 
                     Rectangle {
                         required property int index
                         property bool is_active: Hyprland.focusedMonitor?.activeWorkspace?.id === (index + 1)
-                        width: 20
-                        height: 20
-                        radius: 3
+
+                        width: Globals.controls.barWidth - 10
+                        height: Globals.controls.barWidth - 10
+                        radius: Globals.controls.radius
 
                         color: is_active ? Theme.primary : workspaceTextArea.pressed ? Theme.source_color : workspaceTextArea.containsMouse ? Theme.primary_container : Theme.background
 
@@ -77,102 +45,84 @@ ShellRoot {
                             anchors.centerIn: parent
                             text: index + 1
                             color: is_active ? Theme.background : workspaceTextArea.pressed ? Theme.on_primary :Theme.on_background
-                            font.pointSize: 11
+                            font: is_active ? Globals.font.bold : Globals.font.regular
                         }
                     }
                 }
-            }
-        }
+            ]
 
-        Rectangle {
+            midItems: [
+                Rectangle {
 
-            color: clockArea.pressed ? Theme.source_color : clockArea.containsMouse ? Theme.primary_container : Theme.background
+                    color: clockArea.pressed ? Theme.source_color : clockArea.containsMouse ? Theme.primary_container : Theme.background
 
-            anchors.centerIn: parent
-            anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.centerIn: parent
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-            height: childrenRect.height + 4
-            width: 24
+                    height: childrenRect.height + 4
+                    width: Globals.controls.barWidth - 4
+                    radius: Globals.controls.radius
 
-            radius: 3
+                    MouseArea {
+                        id: clockArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                    }
 
-            MouseArea {
-                id: clockArea
-                anchors.fill: parent
-                hoverEnabled: true
-            }
+                    ColumnLayout {
+                        anchors.centerIn: parent
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-            ColumnLayout {
-                anchors.centerIn: parent
-                anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: Globals.controls.spacing
 
-                spacing: 5
+                        SystemClock {
+                            id: clock
+                            precision: SystemClock.Seconds
+                        }
 
-                SystemClock {
-                    id: clock
-                    precision: SystemClock.Seconds
+                        Text {
+                            Layout.alignment: Qt.AlignLeft
+                            text: Qt.formatDateTime(clock.date, "h")
+                            color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                            font: Globals.font.mono
+                        }
+
+                        Text {
+                            Layout.alignment: Qt.AlignRight
+                            text: Qt.formatDateTime(clock.date, "m")
+                            color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                            font: Globals.font.mono
+                        }
+
+                        Item {
+                            height: Globals.control.spacing
+                        }
+
+                        Text {
+                            Layout.alignment: Qt.AlignLeft
+                            text: Qt.formatDateTime(clock.date, "d")
+                            color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                            font: Globals.font.mono
+                        }
+
+                        Text {
+                            Layout.alignment: Qt.AlignRight
+                            text: Qt.formatDateTime(clock.date, "M")
+                            color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                            font: Globals.font.mono
+                        }
+
+                        Text {
+                            Layout.alignment: Qt.AlignLeft
+                            text: Qt.formatDateTime(clock.date, "yy")
+                            color: clockArea.pressed ? Theme.on_primary : Theme.on_background
+                            font: Globals.font.mono
+                        }
+                    }
                 }
+            ]
 
-                Text {
-                    Layout.alignment: Qt.AlignLeft
-                    text: Qt.formatDateTime(clock.date, "h")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Text {
-                    Layout.alignment: Qt.AlignRight
-                    text: Qt.formatDateTime(clock.date, "m")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Item {
-                    height: 5
-                }
-
-                Text {
-                    Layout.alignment: Qt.AlignLeft
-                    text: Qt.formatDateTime(clock.date, "d")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Text {
-                    Layout.alignment: Qt.AlignRight
-                    text: Qt.formatDateTime(clock.date, "M")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-
-                Text {
-                    Layout.alignment: Qt.AlignLeft
-                    text: Qt.formatDateTime(clock.date, "yy")
-                    color: clockArea.pressed ? Theme.on_primary : Theme.on_background
-                    font.pointSize: 11
-                }
-            }
-        }
-
-        Rectangle {
-            color: Theme.background
-
-            anchors {
-                bottom: parent.bottom
-                horizontalCenter: parent.horizontalCenter
-            }
-
-            height: childrenRect.height + 4
-            width: 24
-
-            radius: 3
-
-            Column {
-                anchors.centerIn: parent
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                spacing: 5
-
+            botItems: [
                 Repeater {
                     model: SystemTray.items.values
 
@@ -182,9 +132,9 @@ ShellRoot {
 
                         anchors.horizontalCenter: parent.horizontalCenter
 
-                        width: 20
-                        height: 20
-                        radius: 3
+                        width: Globals.controls.barWidth - 10
+                        height: Globals.controls.barWidth - 10
+                        radius: Globals.controls.radius
 
                         color: sysTrayItemArea.pressed ? Theme.source_color : sysTrayItemArea.containsMouse ? Theme.primary_container : Theme.background
 
@@ -192,7 +142,7 @@ ShellRoot {
                             id: icon
                             anchors.centerIn: parent
                             source: sysTrayItem.modelData.icon
-                            implicitSize: 17
+                            implicitSize: Globals.controls.iconSize
                         }
 
                         QsMenuAnchor {
@@ -203,7 +153,7 @@ ShellRoot {
 
                             anchor.onAnchoring: {
                                 const window = sysTrayItem.QsWindow.window;
-                                const widgetRect = window.contentItem.mapFromItem(sysTrayItem, 25, 0);
+                                const widgetRect = window.contentItem.mapFromItem(sysTrayItem, Globals.controls.barWidth - 4, 0);
 
                                 menuAnchor.anchor.rect = widgetRect;
                             }
@@ -228,7 +178,7 @@ ShellRoot {
                             }
                         }
                     }
-                }
+                },
 
                 Rectangle {
                     property bool is_caffed: false
@@ -237,10 +187,9 @@ ShellRoot {
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    height: 20
-                    width: 20
-
-                    radius: 3
+                    width: Globals.controls.barWidth - 10
+                    height: Globals.controls.barWidth - 10
+                    radius: Globals.controls.radius
 
                     MouseArea {
                         id: caffeineArea
@@ -275,126 +224,125 @@ ShellRoot {
                         text: parent.is_caffed ? "󰅶" : "󰾪"
                         color: parent.is_caffed ? Theme.background : Theme.on_background
 
-                        font.pointSize: 11
+                        font: Globals.font.regular
 
                         anchors.centerIn: parent
                     }
-                }
+                },
 
-                Rectangle {
-                    readonly property UPowerDevice device: UPower.displayDevice
-                    readonly property bool batteryAvailable: device && device.ready && device.isLaptopBattery
-                    readonly property real batteryLevel: batteryAvailable ? Math.round(device.percentage * 100) : 0
-                    readonly property bool isCharging: batteryAvailable && device.state === UPowerDeviceState.Charging && device.changeRate > 0
-                    readonly property bool isPluggedIn: batteryAvailable && (device.state !== UPowerDeviceState.Discharging && device.state !== UPowerDeviceState.Empty)
-                    readonly property bool isLowBattery: batteryAvailable && batteryLevel <= 20
-                    readonly property string batteryHealth: {
-                        if (!batteryAvailable) {
-                            return "N/A"
-                        }
-
-                        if (device.healthSupported && device.healthPercentage > 0) {
-                            return `${Math.round(device.healthPercentage)}%`
-                        }
-
-                        if (device.energyCapacity > 0 && device.energy > 0) {
-                            const healthPercent = (device.energyCapacity / 90.0045) * 100
-                            return `${Math.round(healthPercent)}%`
-                        }
-
-                        return "N/A"
-                    }
-                    readonly property real batteryCapacity: batteryAvailable && device.energyCapacity > 0 ? device.energyCapacity : 0
-                    readonly property string batteryStatus: {
-                        if (!batteryAvailable) {
-                            return "No Battery"
-                        }
-
-                        if (device.state === UPowerDeviceState.Charging && device.changeRate <= 0) {
-                            return "Plugged In"
-                        }
-
-                        return UPowerDeviceState.toString(device.state)
-                    }
-                    readonly property bool suggestPowerSaver: batteryAvailable && isLowBattery && UPower.onBattery && (typeof PowerProfiles !== "undefined" && PowerProfiles.profile !== PowerProfile.PowerSaver)
-
-                    readonly property var bluetoothDevices: {
-                        const btDevices = []
-                        const bluetoothTypes = [UPowerDeviceType.BluetoothGeneric, UPowerDeviceType.Headphones, UPowerDeviceType.Headset, UPowerDeviceType.Keyboard, UPowerDeviceType.Mouse, UPowerDeviceType.Speakers]
-
-                        for (var i = 0; i < UPower.devices.count; i++) {
-                            const dev = UPower.devices.get(i)
-                            if (dev && dev.ready && bluetoothTypes.includes(dev.type)) {
-                                btDevices.push({
-                                                   "name": dev.model || UPowerDeviceType.toString(dev.type),
-                                                   "percentage": Math.round(dev.percentage),
-                                                   "type": dev.type
-                                               })
-                            }
-                        }
-                        return btDevices
-                    }
-
-                    function formatTimeRemaining() {
-                        if (!batteryAvailable) {
-                            return "Unknown"
-                        }
-
-                        const timeSeconds = isCharging ? device.timeToFull : device.timeToEmpty
-
-                        if (!timeSeconds || timeSeconds <= 0 || timeSeconds > 86400) {
-                            return "Unknown"
-                        }
-
-                        const hours = Math.floor(timeSeconds / 3600)
-                        const minutes = Math.floor((timeSeconds % 3600) / 60)
-
-                        if (hours > 0) {
-                            return `${hours}h ${minutes}m`
-                        }
-
-                        return `${minutes}m`
-                    }
-
-                    color: systemPowerArea.pressed ? Theme.source_color : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    height: 20
-                    width: 20
-
-                    radius: 3
-
-                    MouseArea {
-                        id: systemPowerArea
-                        anchors.fill: parent
-                        hoverEnabled: true
-
-                        acceptedButtons: Qt.LeftButton
-
-                        onClicked: event => {
-                        }
-                    }
-
-                    Text {
-                        text: ""
-                        color: Theme.on_background
-
-                        font.pointSize: 11
-
-                        anchors.centerIn: parent
-                    }
-                }
+                // Rectangle {
+                //     readonly property UPowerDevice device: UPower.displayDevice
+                //     readonly property bool batteryAvailable: device && device.ready && device.isLaptopBattery
+                //     readonly property real batteryLevel: batteryAvailable ? Math.round(device.percentage * 100) : 0
+                //     readonly property bool isCharging: batteryAvailable && device.state === UPowerDeviceState.Charging && device.changeRate > 0
+                //     readonly property bool isPluggedIn: batteryAvailable && (device.state !== UPowerDeviceState.Discharging && device.state !== UPowerDeviceState.Empty)
+                //     readonly property bool isLowBattery: batteryAvailable && batteryLevel <= 20
+                //     readonly property string batteryHealth: {
+                //         if (!batteryAvailable) {
+                //             return "N/A"
+                //         }
+                //
+                //         if (device.healthSupported && device.healthPercentage > 0) {
+                //             return `${Math.round(device.healthPercentage)}%`
+                //         }
+                //
+                //         if (device.energyCapacity > 0 && device.energy > 0) {
+                //             const healthPercent = (device.energyCapacity / 90.0045) * 100
+                //             return `${Math.round(healthPercent)}%`
+                //         }
+                //
+                //         return "N/A"
+                //     }
+                //     readonly property real batteryCapacity: batteryAvailable && device.energyCapacity > 0 ? device.energyCapacity : 0
+                //     readonly property string batteryStatus: {
+                //         if (!batteryAvailable) {
+                //             return "No Battery"
+                //         }
+                //
+                //         if (device.state === UPowerDeviceState.Charging && device.changeRate <= 0) {
+                //             return "Plugged In"
+                //         }
+                //
+                //         return UPowerDeviceState.toString(device.state)
+                //     }
+                //     readonly property bool suggestPowerSaver: batteryAvailable && isLowBattery && UPower.onBattery && (typeof PowerProfiles !== "undefined" && PowerProfiles.profile !== PowerProfile.PowerSaver)
+                //
+                //     readonly property var bluetoothDevices: {
+                //         const btDevices = []
+                //         const bluetoothTypes = [UPowerDeviceType.BluetoothGeneric, UPowerDeviceType.Headphones, UPowerDeviceType.Headset, UPowerDeviceType.Keyboard, UPowerDeviceType.Mouse, UPowerDeviceType.Speakers]
+                //
+                //         for (var i = 0; i < UPower.devices.count; i++) {
+                //             const dev = UPower.devices.get(i)
+                //             if (dev && dev.ready && bluetoothTypes.includes(dev.type)) {
+                //                 btDevices.push({
+                //                                    "name": dev.model || UPowerDeviceType.toString(dev.type),
+                //                                    "percentage": Math.round(dev.percentage),
+                //                                    "type": dev.type
+                //                                })
+                //             }
+                //         }
+                //         return btDevices
+                //     }
+                //
+                //     function formatTimeRemaining() {
+                //         if (!batteryAvailable) {
+                //             return "Unknown"
+                //         }
+                //
+                //         const timeSeconds = isCharging ? device.timeToFull : device.timeToEmpty
+                //
+                //         if (!timeSeconds || timeSeconds <= 0 || timeSeconds > 86400) {
+                //             return "Unknown"
+                //         }
+                //
+                //         const hours = Math.floor(timeSeconds / 3600)
+                //         const minutes = Math.floor((timeSeconds % 3600) / 60)
+                //
+                //         if (hours > 0) {
+                //             return `${hours}h ${minutes}m`
+                //         }
+                //
+                //         return `${minutes}m`
+                //     }
+                //
+                //     color: systemPowerArea.pressed ? Theme.source_color : systemPowerArea.containsMouse ? Theme.primary_container : Theme.background
+                //
+                //     anchors.horizontalCenter: parent.horizontalCenter
+                //
+                //     height: 20
+                //     width: 20
+                //
+                //     radius: 3
+                //
+                //     MouseArea {
+                //         id: systemPowerArea
+                //         anchors.fill: parent
+                //         hoverEnabled: true
+                //
+                //         acceptedButtons: Qt.LeftButton
+                //
+                //         onClicked: event => {
+                //         }
+                //     }
+                //
+                //     Text {
+                //         text: ""
+                //         color: Theme.on_background
+                //
+                //         font.pointSize: 11
+                //
+                //         anchors.centerIn: parent
+                //     }
+                // },
 
                 Rectangle {
                     color: systemSessionArea.pressed ? Theme.source_color : systemSessionArea.containsMouse ? Theme.primary_container : Theme.background
 
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    height: 20
-                    width: 20
-
-                    radius: 3
+                    width: Globals.controls.barWidth - 10
+                    height: Globals.controls.barWidth - 10
+                    radius: Globals.controls.radius
 
                     MouseArea {
                         id: systemSessionArea
@@ -418,17 +366,17 @@ ShellRoot {
                         text: ""
                         color: Theme.on_background
 
-                        font.pointSize: 11
+                        font: Globals.font.regular
 
                         anchors.centerIn: parent
                     }
                 }
-            }
+            ]
         }
     }
 
     Scope {
-        id: root
+        id: battery
 
         readonly property list<var> warnLevels: [...Config.general.battery.warnLevels].sort((a, b) => b.level - a.level)
 
