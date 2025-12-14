@@ -26,9 +26,9 @@ input_path = 'templates/wezterm_theme.toml'
 output_path = '~/.config/wezterm/colors/matugen_theme.toml'
 post_hook = 'touch ~/.config/wezterm/wezterm.lua'
 
-[templates.alacritty]
-input_path = 'templates/alacritty_colors.toml'
-output_path = '~/.config/alacritty/colors.toml'
+# [templates.alacritty]
+# input_path = 'templates/alacritty_colors.toml'
+# output_path = '~/.config/alacritty/colors.toml'
 
 [templates.starship]
 input_path = 'templates/starship_template.toml'
