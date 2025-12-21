@@ -62,10 +62,6 @@ input_path = 'templates/nvim_colors.lua'
 output_path = '~/.config/nvim/lua/matugen.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
-[templates.spf]
-input_path = 'templates/superfile_theme.toml'
-output_path = '~/.config/superfile/theme/matugen.toml'
-
 [templates.waypaper]
 input_path = 'templates/all_colors.css'
 output_path = '~/.config/waypaper/colors.css'
