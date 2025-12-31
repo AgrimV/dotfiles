@@ -1,67 +1,75 @@
-require("nvim-treesitter.configs").setup({
-  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+local treesitter = require("nvim-treesitter")
+local ts_config = require("nvim-treesitter.config")
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+local ensure_installed = {
+  "lua",
+  "vim",
+  "vimdoc",
+  "help",
+  "query",
+  "markdown_inline",
+  "markdown",
+  "python",
+  "comment",
+}
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+local already_installed = ts_config.get_installed("parsers")
+local parsers_to_install = vim
+  .iter(ensure_installed)
+  :filter(function(parser)
+    return not vim.tbl_contains(already_installed, parser)
+  end)
+  :totable()
+if #parsers_to_install > 0 then
+  treesitter.install(parsers_to_install)
+end
 
-  highlight = {
-    enable = true,
-  },
+local function ts_start(bufnr, parser_name)
+  -- highlights
+  vim.treesitter.start(bufnr, parser_name)
 
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<Leader>ss", -- set to `false` to disable one of the mappings
-      node_incremental = "<Leader>si",
-      scope_incremental = "<Leader>sc",
-      node_decremental = "<Leader>sd",
-    },
-  },
+  -- folds
+  vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  vim.wo.foldmethod = "expr"
+  vim.wo.foldlevel = 99
 
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
+  -- indentation
+  vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+end
 
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
+-- Auto-install and start parsers for any buffer
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  desc = "Enable Treesitter",
+  callback = function(event)
+    local bufnr = event.buf
+    local filetype = event.match
 
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+    -- Skip if no filetype
+    if filetype == "" then
+      return
+    end
 
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
+    local parser_name = vim.treesitter.language.get_lang(filetype)
+    if not parser_name then
+      vim.notify(vim.inspect("No treesitter parser found for filetype: " .. filetype), vim.log.levels.WARN)
+      return
+    end
 
-        ["ai"] = "@conditional.outer",
-        ["ii"] = "@conditional.inner",
+    -- Try to get existing parser
+    if not vim.tbl_contains(ts_config.get_available(), parser_name) then
+      return
+    end
 
-        ["al"] = "@loop.outer",
-        ["il"] = "@loop.inner",
+    -- Check if parser is already installed
+    if not vim.tbl_contains(already_installed, parser_name) then
+      -- If not installed, install parser asynchronously and start treesitter
+      vim.notify("Installing parser for " .. parser_name, vim.log.levels.INFO)
+      treesitter.install({ parser_name }):await(function()
+        ts_start(bufnr, parser_name)
+      end)
+      return
+    end
 
-        -- You can optionally set descriptions to the mappings (used in the desc parameter of
-        -- nvim_buf_set_keymap) which plugins like which-key display
-        -- You can also use captures from other query groups like `locals.scm`
-        -- ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-      },
-
-      -- You can choose the select mode (default is charwise 'v')
-      selection_modes = {
-        ["@parameter.outer"] = "v",
-        ["@function.outer"] = "v",
-        ["@class.outer"] = "V",
-        -- 'v' -- charwise
-        -- 'V' -- linewise
-        -- '<c-v>' -- blockwise
-      },
-
-      include_surrounding_whitespace = true,
-    },
-  },
+    ts_start(bufnr, parser_name)
+  end,
 })

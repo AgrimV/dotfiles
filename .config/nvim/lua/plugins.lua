@@ -47,11 +47,16 @@ require("lazy").setup({
       config = function()
         require("mini.icons").setup()
         require("mini.surround").setup()
-        -- require("mini.terminals").setup()
         require("mini.pick").setup({
           mappings = {
             choose_in_tabpage = "<CR>",
             choose = "<C-t>",
+          },
+        })
+        local hipatterns = require("mini.hipatterns")
+        hipatterns.setup({
+          highlighters = {
+            hex_color = hipatterns.gen_highlighter.hex_color(),
           },
         })
         require("mini.indentscope").setup({
@@ -60,13 +65,6 @@ require("lazy").setup({
             animation = require("mini.indentscope").gen_animation.none(),
           },
         })
-        require("mini.hipatterns").setup({
-          highlighters = {
-            todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-            hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
-          },
-        })
-
         require("mini.files").setup()
         local map_split = function(buf_id, key, close_after)
           local open_file = function()
@@ -158,18 +156,11 @@ require("lazy").setup({
     { "lewis6991/gitsigns.nvim", opts = { numhl = true, signcolumn = false } },
     {
       "nvim-treesitter/nvim-treesitter",
-      branch = "master",
       lazy = false,
       build = ":TSUpdate",
       config = function()
         require("treesitter")
       end,
-    },
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-      },
     },
     {
       "saghen/blink.cmp",
