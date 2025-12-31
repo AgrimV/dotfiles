@@ -98,6 +98,18 @@ get_player_display() {
   esac
 }
 
+previous_track() {
+  playerctl --player=$PREFERRED_PLAYERS previous
+}
+
+play_pause_player() {
+  playerctl --player=$PREFERRED_PLAYERS play-pause
+}
+
+next_track() {
+  playerctl --player=$PREFERRED_PLAYERS next
+}
+
 
 # CLI
 case "${1:-}" in
@@ -119,6 +131,18 @@ case "${1:-}" in
   printf '%s\n' "$(get_player_display)"
   ;;
 
+--previous)
+  printf '%s\n' "$(previous_track)"
+  ;;
+
+--toggle)
+  printf '%s\n' "$(play_pause_player)"
+  ;;
+
+--next)
+  printf '%s\n' "$(next_track)"
+  ;;
+
 --help | *)
   cat <<EOF
 Usage: $(basename "$0") [OPTION]
@@ -130,6 +154,9 @@ Options:
   --artist        Display artist name (truncated to 26 chars)
   --status        Display play/pause/stop icon
   --player        Display player source icon
+  --previous      Previous track for active player
+  --toggle        Play/Pause toggle for active player
+  --next          Next track for active player
   --help          Show this help message
 
 Examples:
