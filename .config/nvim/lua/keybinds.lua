@@ -3,7 +3,7 @@ local function map(mode, key, value, opts)
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
-  vim.api.nvim_set_keymap(mode, key, value, options)
+  vim.keymap.set(mode, key, value, options)
 end
 
 map("n", "<Tab>", "gt")
@@ -13,9 +13,31 @@ map("n", "k", "gk")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+-- Mini Keybinds
 map("n", "<C-o>", ":lua MiniFiles.open()<Enter>")
 map("n", "<Leader>ff", ":Pick files<CR>")
 map("n", "<Leader>fc", ":Pick grep_live<CR>")
+
+-- Treesitter Textobjects Keybinds
+local move = require("nvim-treesitter-textobjects.move")
+map({ "n", "x", "o" }, "]m", function()
+  move.goto_next("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "[m", function()
+  move.goto_previous("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "]o", function()
+  move.goto_next_start({ "@loop.outer", "@conditional.outer", "@loop.inner" }, "textobjects")
+end)
+map({ "n", "x", "o" }, "[o", function()
+  move.goto_previous_start({ "@loop.outer", "@conditional.outer", "@loop.inner" }, "textobjects")
+end)
+map({ "n", "x", "o" }, "]z", function()
+  move.goto_next_start("@fold", "folds")
+end)
+map({ "n", "x", "o" }, "[z", function()
+  move.goto_previous_start("@fold", "folds")
+end)
 
 -- Wezterm Integration
 local nav = {
@@ -42,6 +64,6 @@ local function navigate(key)
 end
 
 for key, dir in pairs(nav) do
-  vim.keymap.set("n", "<C-" .. dir .. ">", navigate(key))
-  vim.keymap.set("n", "<C-" .. key .. ">", navigate(key))
+  map("n", "<C-" .. dir .. ">", navigate(key))
+  map("n", "<C-" .. key .. ">", navigate(key))
 end

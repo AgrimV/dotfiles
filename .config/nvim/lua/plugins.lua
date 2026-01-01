@@ -42,15 +42,35 @@ require("lazy").setup({
       opts = {},
     },
     {
-      "echasnovski/mini.nvim",
+      "nvim-mini/mini.nvim",
       version = "*",
       config = function()
         require("mini.icons").setup()
         require("mini.surround").setup()
+        require("mini.sessions").setup({ autoread = true })
+        require("mini.move").setup()
         require("mini.pick").setup({
           mappings = {
             choose_in_tabpage = "<CR>",
             choose = "<C-t>",
+          },
+        })
+        require("mini.operators").setup({
+          replace = {
+            prefix = "gp",
+          },
+        })
+        local spec_treesitter = require("mini.ai").gen_spec.treesitter
+        require("mini.ai").setup({
+          n_lines = 500,
+          custom_textobjects = {
+            m = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+            c = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+            t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+            o = spec_treesitter({
+              a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+              i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+            }),
           },
         })
         local hipatterns = require("mini.hipatterns")
@@ -159,7 +179,15 @@ require("lazy").setup({
       lazy = false,
       build = ":TSUpdate",
       config = function()
+        -- file, not the plugin
         require("treesitter")
+      end,
+    },
+    {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      branch = "main",
+      init = function()
+        vim.g.no_plugin_maps = true
       end,
     },
     {

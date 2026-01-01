@@ -57,7 +57,7 @@ config.keys = {
 		action = wezterm.action.Search({ CaseSensitiveString = "" }),
 	},
 	{
-		key = "l",
+		key = "c",
 		mods = "ALT",
 		action = wezterm.action.Multiple({
 			wezterm.action.ClearScrollback("ScrollbackAndViewport"),

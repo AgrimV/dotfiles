@@ -9,6 +9,8 @@ local ensure_installed = {
   "query",
   "markdown_inline",
   "markdown",
+  "html",
+  "yaml",
   "python",
   "comment",
 }
