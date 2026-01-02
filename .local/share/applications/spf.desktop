@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Superfile
-Type=Application
-GenericName=File Manager
-Comment=File manager utility in terminal environment.
-Exec=spf
-Terminal=true
-Categories=Utility;
-StartupNotify=false;
