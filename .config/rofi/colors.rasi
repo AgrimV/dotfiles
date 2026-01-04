@@ -1,0 +1,7 @@
+* {
+    background: #0e1416;
+    on-background: #dee3e5;
+    primary: #82d3e1;
+    on-primary: #00363d;
+    source-color: #12b2c6;
+}
