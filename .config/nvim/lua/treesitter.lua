@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
     local parser_name = vim.treesitter.language.get_lang(filetype)
     if not parser_name then
-      vim.notify(vim.inspect("No treesitter parser found for filetype: " .. filetype), vim.log.levels.WARN)
+      -- vim.notify(vim.inspect("No treesitter parser found for filetype: " .. filetype), vim.log.levels.WARN)
       return
     end
 

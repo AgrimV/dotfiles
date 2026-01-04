@@ -45,6 +45,7 @@ require("lazy").setup({
       "nvim-mini/mini.nvim",
       version = "*",
       config = function()
+        require("mini.pairs").setup()
         require("mini.icons").setup()
         require("mini.surround").setup()
         require("mini.sessions").setup({ autoread = true })
@@ -200,12 +201,6 @@ require("lazy").setup({
         signature = { enabled = true },
       },
       opts_extend = { "sources.default" },
-    },
-    {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-      config = true,
-      opts = {},
     },
 
     -- Colorschemes
