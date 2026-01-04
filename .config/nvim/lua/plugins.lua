@@ -173,7 +173,6 @@ require("lazy").setup({
         },
       },
     },
-    { "tpope/vim-fugitive" },
     { "lewis6991/gitsigns.nvim", opts = { numhl = true, signcolumn = false } },
     {
       "nvim-treesitter/nvim-treesitter",
