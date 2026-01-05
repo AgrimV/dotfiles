@@ -13,12 +13,46 @@ map("n", "k", "gk")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Mini Keybinds
+-- Mini
 map("n", "<C-o>", ":lua MiniFiles.open()<Enter>")
 map("n", "<Leader>ff", ":Pick files<CR>")
 map("n", "<Leader>fc", ":Pick grep_live<CR>")
 
--- Treesitter Textobjects Keybinds
+-- Gitsigns
+local gitsigns = require("gitsigns")
+map("n", "]c", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "]c", bang = true })
+  else
+    gitsigns.nav_hunk("next")
+  end
+end)
+map("n", "[c", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "[c", bang = true })
+  else
+    gitsigns.nav_hunk("prev")
+  end
+end)
+map({ "o", "x" }, "ih", gitsigns.select_hunk)
+map("n", "<leader>s", gitsigns.stage_hunk)
+map("n", "<leader>bs", gitsigns.stage_buffer)
+map("v", "<leader>s", function()
+  gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end)
+map("n", "<leader>r", gitsigns.reset_hunk)
+map("n", "<leader>br", gitsigns.reset_buffer)
+map("v", "<leader>r", function()
+  gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end)
+map("n", "<leader>d", gitsigns.preview_hunk_inline)
+map("n", "<leader>D", gitsigns.diffthis)
+map("n", "<leader>b", function()
+  gitsigns.blame_line({ full = true })
+end)
+map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
+
+-- Treesitter Textobjects
 local move = require("nvim-treesitter-textobjects.move")
 map({ "n", "x", "o" }, "]m", function()
   move.goto_next("@function.outer", "textobjects")

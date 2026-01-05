@@ -43,6 +43,10 @@ input_path = 'templates/pywalfox_colors.json'
 output_path = '~/.cache/wal/colors.json'
 post_hook = 'pywalfox update'
 
+[templates.yazi]
+input_path = 'templates/yazi_theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
 [templates.vesktop]
 input_path = 'templates/vesktop_theme.css'
 output_path = '~/.config/vesktop/themes/midnight-discord.css'
