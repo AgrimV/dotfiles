@@ -125,6 +125,8 @@ require("lazy").setup({
     {
       "neovim/nvim-lspconfig",
     },
+    { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim", opts = { numhl = true, signcolumn = false } },
     {
       "mason-org/mason.nvim",
       config = function()
@@ -173,7 +175,6 @@ require("lazy").setup({
         },
       },
     },
-    { "lewis6991/gitsigns.nvim", opts = { numhl = true, signcolumn = false } },
     {
       "nvim-treesitter/nvim-treesitter",
       lazy = false,
